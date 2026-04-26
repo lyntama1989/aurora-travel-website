@@ -11,6 +11,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .modal-active { overflow: hidden; }
         .bg-aurora { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+        .rental-card { cursor: pointer; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -85,41 +86,41 @@
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold mb-4 uppercase tracking-tighter text-indigo-400">Pilihan Armada Rental</h2>
-                <p class="text-slate-400">Unit Bersih, Harum, dan Terawat. Driver Sopan & Berpengalaman.</p>
+                <p class="text-slate-400">Unit Bersih, Harum, dan Terawat. Driver Sopan & Berpengalaman. Klik untuk lihat detail!</p>
             </div>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
+                <div class="rental-card bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group" onclick="openRental('zenix')">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Innova Zenix</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 850.000 <span class="text-xs text-white/50 font-normal">/12 Jam</span></p>
-                    <button onclick="openRental('zenix')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
+                    <button class="w-full py-3 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition bg-indigo-600/20">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
+                <div class="rental-card bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group" onclick="openRental('avanza')">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">New Avanza</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 450.000 <span class="text-xs text-white/50 font-normal">/12 Jam</span></p>
-                    <button onclick="openRental('avanza')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
+                    <button class="w-full py-3 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition bg-indigo-600/20">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
+                <div class="rental-card bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group" onclick="openRental('hiace')">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Hiace Premio</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 1.250.000 <span class="text-xs text-white/50 font-normal">/Full Day</span></p>
-                    <button onclick="openRental('hiace')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
+                    <button class="w-full py-3 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition bg-indigo-600/20">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
+                <div class="rental-card bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group" onclick="openRental('alphard')">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Toyota Alphard</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 2.800.000 <span class="text-xs text-white/50 font-normal">/Full Day</span></p>
-                    <button onclick="openRental('alphard')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
+                    <button class="w-full py-3 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition bg-indigo-600/20">Lihat Spesifikasi</button>
                 </div>
             </div>
         </div>
