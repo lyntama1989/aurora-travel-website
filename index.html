@@ -89,37 +89,37 @@
             </div>
 
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group">
+                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Innova Zenix</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 850.000 <span class="text-xs text-white/50 font-normal">/12 Jam</span></p>
-                    <button onclick="openRental('zenix')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Cek Spesifikasi</button>
+                    <button onclick="openRental('zenix')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group">
+                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">New Avanza</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 450.000 <span class="text-xs text-white/50 font-normal">/12 Jam</span></p>
-                    <button onclick="openRental('avanza')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Cek Spesifikasi</button>
+                    <button onclick="openRental('avanza')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group">
+                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Hiace Premio</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 1.250.000 <span class="text-xs text-white/50 font-normal">/Full Day</span></p>
-                    <button onclick="openRental('hiace')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Cek Spesifikasi</button>
+                    <button onclick="openRental('hiace')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
                 </div>
-                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group">
+                <div class="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-indigo-500 transition-all duration-300 group cursor-pointer">
                     <div class="h-40 mb-6 overflow-hidden rounded-2xl">
                         <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <h4 class="text-xl font-bold mb-2">Toyota Alphard</h4>
                     <p class="text-indigo-400 font-bold mb-4">Rp 2.800.000 <span class="text-xs text-white/50 font-normal">/Full Day</span></p>
-                    <button onclick="openRental('alphard')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Cek Spesifikasi</button>
+                    <button onclick="openRental('alphard')" class="w-full py-2 border border-white/20 rounded-xl text-sm font-semibold hover:bg-white hover:text-slate-900 transition">Lihat Spesifikasi</button>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
     <div id="modal-container" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md" onclick="closeModal()"></div>
         <div class="relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2rem] md:rounded-[3rem] shadow-2xl p-6 md:p-10">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-red-500 text-3xl"><i class="fas fa-times"></i></button>
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-red-500 text-3xl z-10"><i class="fas fa-times"></i></button>
             <div id="modal-body"></div>
         </div>
     </div>
@@ -186,32 +186,84 @@
                 name: "Toyota Innova Zenix",
                 price: "850.000",
                 img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800",
-                specs: { seat: "7 Penumpang", trans: "Matic / Hybrid", engine: "2.000 cc", feature: "Captain Seat, Panoramic Roof" },
-                terms: "Harga termasuk Driver & BBM. Luar kota berlaku tarif tambahan.",
+                specs: [
+                    { label: "Kapasitas", value: "7 Penumpang", icon: "fa-users" },
+                    { label: "Transmisi", value: "Matic / Hybrid", icon: "fa-gear" },
+                    { label: "Mesin", value: "2.000 cc", icon: "fa-engine" },
+                    { label: "Bahan Bakar", value: "Hybrid (Hemat)", icon: "fa-gas-pump" }
+                ],
+                features: [
+                    "Captain Seat Comfort",
+                    "Panoramic Roof",
+                    "Air Conditioning Digital",
+                    "Multimedia Player",
+                    "Power Steering",
+                    "ABS & Airbag"
+                ],
+                terms: "Harga termasuk Driver & BBM. Luar kota berlaku tarif tambahan. Minimum 12 jam atau lebih.",
                 wa: "Halo Aurora, saya ingin sewa Innova Zenix."
             },
             avanza: {
                 name: "Toyota New Avanza",
                 price: "450.000",
                 img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800",
-                specs: { seat: "7 Penumpang", trans: "Manual / Matic", engine: "1.500 cc", feature: "AC Double Blower, Multimedia Player" },
-                terms: "Harga termasuk Driver (12 Jam). Belum termasuk Parkir & Makan Driver.",
+                specs: [
+                    { label: "Kapasitas", value: "7 Penumpang", icon: "fa-users" },
+                    { label: "Transmisi", value: "Manual / Matic", icon: "fa-gear" },
+                    { label: "Mesin", value: "1.500 cc", icon: "fa-engine" },
+                    { label: "Bahan Bakar", value: "Bensin (Hemat)", icon: "fa-gas-pump" }
+                ],
+                features: [
+                    "AC Double Blower",
+                    "Multimedia Player",
+                    "Power Steering",
+                    "Seat Heating",
+                    "Brake Assist",
+                    "Central Lock"
+                ],
+                terms: "Harga termasuk Driver (12 Jam). Belum termasuk Parkir & Makan Driver. Ideal untuk keluarga kecil.",
                 wa: "Halo Aurora, saya ingin sewa New Avanza."
             },
             hiace: {
                 name: "Toyota Hiace Premio",
                 price: "1.250.000",
                 img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800",
-                specs: { seat: "14 Penumpang", trans: "Manual", engine: "2.800 cc (Turbo)", feature: "Reclining Seat, Audio Premium" },
-                terms: "Sangat cocok untuk rombongan keluarga atau kantor.",
+                specs: [
+                    { label: "Kapasitas", value: "14 Penumpang", icon: "fa-users" },
+                    { label: "Transmisi", value: "Manual", icon: "fa-gear" },
+                    { label: "Mesin", value: "2.800 cc (Turbo)", icon: "fa-engine" },
+                    { label: "Bahan Bakar", value: "Diesel", icon: "fa-gas-pump" }
+                ],
+                features: [
+                    "Reclining Seat",
+                    "Audio Premium",
+                    "Air Conditioning Central",
+                    "Spacious Interior",
+                    "Power Windows",
+                    "Electronic Mirror"
+                ],
+                terms: "Sangat cocok untuk rombongan keluarga besar atau kantor. Full Day Service dengan driver profesional.",
                 wa: "Halo Aurora, saya ingin sewa Hiace Premio."
             },
             alphard: {
                 name: "Toyota Alphard VIP",
                 price: "2.800.000",
                 img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800",
-                specs: { seat: "6 Penumpang", trans: "Matic", engine: "2.500 cc", feature: "Pilot Seat, Sunroof, VIP Service" },
-                terms: "Unit mewah untuk Wedding atau Tamu VVIP. Full Day Service.",
+                specs: [
+                    { label: "Kapasitas", value: "6-7 Penumpang", icon: "fa-users" },
+                    { label: "Transmisi", value: "Matic", icon: "fa-gear" },
+                    { label: "Mesin", value: "2.500 cc V6", icon: "fa-engine" },
+                    { label: "Bahan Bakar", value: "Bensin Premium", icon: "fa-gas-pump" }
+                ],
+                features: [
+                    "Pilot Seat VIP",
+                    "Sunroof Panoramic",
+                    "Leather Seat",
+                    "Audio System Premium",
+                    "Electric Sliding Door",
+                    "Seat Warmer & Cooler"
+                ],
+                terms: "Unit mewah untuk Wedding, Tamu VVIP, atau acara khusus. Full Day Service dengan driver berpengalaman & uniform resmi.",
                 wa: "Halo Aurora, saya ingin sewa Toyota Alphard."
             }
         };
@@ -238,7 +290,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-2xl font-bold">Rp ${d.price}</span>
-                            <a href="https://wa.me/6282143463566?text=${encodeURIComponent(d.wa)}" class="bg-green-500 text-white px-8 py-3 rounded-2xl font-bold">Pesan Sekarang</a>
+                            <a href="https://wa.me/6282143463566?text=${encodeURIComponent(d.wa)}" class="bg-green-500 text-white px-8 py-3 rounded-2xl font-bold hover:bg-green-600">Pesan Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -252,34 +304,43 @@
             const r = rentalData[key];
             const html = `
                 <div class="grid md:grid-cols-2 gap-10">
-                    <img src="${r.img}" class="w-full h-80 object-cover rounded-[2rem]">
+                    <img src="${r.img}" class="w-full h-96 object-cover rounded-[2rem] shadow-lg">
                     <div>
-                        <h2 class="text-3xl font-extrabold text-indigo-600 mb-4">${r.name}</h2>
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                            <div class="bg-slate-50 p-4 rounded-2xl">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold">Kapasitas</p>
-                                <p class="font-bold text-sm">${r.specs.seat}</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-2xl">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold">Transmisi</p>
-                                <p class="font-bold text-sm">${r.specs.trans}</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-2xl">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold">Mesin</p>
-                                <p class="font-bold text-sm">${r.specs.engine}</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-2xl">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold">Fitur</p>
-                                <p class="font-bold text-sm">${r.specs.feature}</p>
+                        <h2 class="text-3xl font-extrabold text-indigo-600 mb-2">${r.name}</h2>
+                        <p class="text-slate-500 text-sm mb-6">Unit berkualitas dengan fitur lengkap dan layanan terbaik</p>
+                        
+                        <div class="mb-8">
+                            <h4 class="font-bold text-slate-900 mb-4 flex items-center"><i class="fas fa-info-circle text-indigo-500 mr-2"></i> Spesifikasi Kendaraan:</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                ${r.specs.map(s => `
+                                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-4 rounded-2xl border border-indigo-100">
+                                        <p class="text-[11px] text-slate-500 uppercase font-bold tracking-wide">${s.label}</p>
+                                        <p class="font-bold text-slate-900 text-sm mt-1">${s.value}</p>
+                                    </div>
+                                `).join('')}
                             </div>
                         </div>
-                        <div class="mb-8 border-l-4 border-indigo-500 pl-4 bg-indigo-50 py-3 rounded-r-2xl">
-                            <h4 class="font-bold text-sm mb-1">Ketentuan Sewa:</h4>
-                            <p class="text-xs text-slate-600">${r.terms}</p>
+
+                        <div class="mb-8">
+                            <h4 class="font-bold text-slate-900 mb-4 flex items-center"><i class="fas fa-star text-yellow-400 mr-2"></i> Fitur Unggulan:</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                ${r.features.map(f => `<div class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i><span class="text-xs text-slate-600">${f}</span></div>`).join('')}
+                            </div>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-indigo-600">Rp ${r.price}</span>
-                            <a href="https://wa.me/6282143463566?text=${encodeURIComponent(r.wa)}" class="bg-green-500 text-white px-8 py-3 rounded-2xl font-bold">Sewa Sekarang</a>
+
+                        <div class="mb-8 border-l-4 border-indigo-500 pl-4 bg-indigo-50 py-4 rounded-r-2xl">
+                            <h4 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-file-contract text-indigo-600 mr-2"></i> Ketentuan Sewa:</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">${r.terms}</p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+                            <div>
+                                <p class="text-xs text-slate-500 mb-1">Harga Mulai Dari</p>
+                                <span class="text-3xl font-bold text-indigo-600">Rp ${r.price}</span>
+                            </div>
+                            <a href="https://wa.me/6282143463566?text=${encodeURIComponent(r.wa)}" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition shadow-lg">
+                                <i class="fab fa-whatsapp mr-2"></i>Sewa Sekarang
+                            </a>
                         </div>
                     </div>
                 </div>
