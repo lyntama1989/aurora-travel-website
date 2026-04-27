@@ -8,20 +8,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f1f5f9; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f1f5f9; overflow-x: hidden; color-scheme: dark; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .modal-active { overflow: hidden; }
         .font-utama { font-weight: 800; text-transform: uppercase; font-style: italic; }
         .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Seat Styling */
+        /* Seat Styling Presisi */
         .seat { transition: all 0.3s ease; aspect-ratio: 1/1; }
         .seat.selected { background-color: #4f46e5 !important; color: white !important; border-color: #4f46e5 !important; box-shadow: 0 0 15px rgba(79,70,229,0.5); }
         
         .custom-scroll::-webkit-scrollbar { width: 5px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
         
-        /* Fix Layout Numpuk */
+        /* Mencegah Teks Numpuk / Turun */
         .price-badge { white-space: nowrap; flex-shrink: 0; }
     </style>
 </head>
@@ -101,6 +101,7 @@
                         <a href="https://instagram.com/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition"><i class="fab fa-instagram"></i></a>
                         <a href="https://facebook.com/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://tiktok.com/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/6282143463566" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-green-600 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="md:pl-10">
@@ -124,26 +125,31 @@
         </div>
     </footer>
 
-    <div id="modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+    <div id="modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4 md:p-8">
         <div class="absolute inset-0 bg-black/98 backdrop-blur-xl" onclick="closeModal()"></div>
-        <div class="relative bg-[#020617] border border-white/10 w-full max-w-6xl max-h-[92vh] overflow-y-auto rounded-[2.5rem] p-6 md:p-12 shadow-2xl custom-scroll">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white text-3xl z-50"><i class="fas fa-times"></i></button>
-            <div id="modal-content"></div>
+        <div class="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-[#020617] border border-white/10 rounded-[2rem] md:rounded-[3rem] shadow-2xl overflow-hidden">
+            
+            <div class="absolute top-4 right-4 md:top-6 md:right-6 z-[300]">
+                <button onclick="closeModal()" class="w-10 h-10 md:w-12 md:h-12 bg-black/50 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white backdrop-blur border border-white/10 transition">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            
+            <div id="modal-content" class="p-6 md:p-12 overflow-y-auto custom-scroll w-full h-full"></div>
+            
         </div>
     </div>
 
     <script>
         const waNumber = "6282143463566";
-        const fallbackUI = "onerror=\"this.style.display='none'; this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');\"";
+        // Fallback gambar lebih aman (mencegah error JS)
+        const fallbackUI = "onerror=\"this.src='https://placehold.co/800x600/0f172a/4f46e5?text=Aurora+Travel'\"";
         
         let kursiTerpilih = []; 
         let dataAktif = null;
         let jamAktif = "";
         let tipeLayanan = "";
 
-        /* ====================================================
-           DATABASE (JADWAL MAKAN & OLEH-OLEH DITAMBAHKAN)
-           ==================================================== */
         const travelData = [
             { id: 'madiun-juanda', rute: 'Madiun - Juanda PP', harga: 185000, waktu: ['03:00', '09:00', '15:00', '21:00'], bookedSeats: [] },
             { id: 'madiun-jogja', rute: 'Madiun - Jogja / YIA PP', harga: 165000, waktu: ['05:00', '13:00', '20:00'], bookedSeats: [] }
@@ -176,29 +182,25 @@
             { id: 'alphard', name: 'Alphard Executive', price: '2.800.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/2023_Toyota_Alphard_Executive_Lounge.jpg/800px-2023_Toyota_Alphard_Executive_Lounge.jpg', specs: {t:'Automatic', m:'2.500cc Premium'}, f: ['Pilot Seat Massage', 'Dual Sunroof', 'Privasi Maksimal'] }
         ];
 
-        /* ====================================================
-           LOGIKA RENDER (ANTI-NUMPUK)
-           ==================================================== */
         function renderAll() {
             document.getElementById('shuttle-grid').innerHTML = travelData.map(t => `<div class="glass p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500 transition duration-500 flex flex-col h-full"><h3 class="text-xl md:text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h3><p class="text-2xl md:text-3xl font-black text-white mb-6 price-badge">Rp ${t.harga.toLocaleString('id-ID')} <span class="text-xs text-slate-500 font-normal">/ Seat</span></p><div class="flex gap-2 mb-8 flex-wrap">${t.waktu.map(w => `<span class="bg-white/5 px-3 py-1 rounded-lg text-[10px] font-bold text-slate-300 border border-white/10 whitespace-nowrap">${w} WIB</span>`).join('')}</div><button onclick="bukaModalPilihKursi('shuttle', '${t.id}')" class="w-full mt-auto bg-indigo-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg">Amankan Kursi</button></div>`).join('');
             
-            document.getElementById('car-grid').innerHTML = rentalData.map(c => `<div class="glass p-6 rounded-[2.5rem] text-center hover:border-indigo-500 transition duration-500 flex flex-col h-full"><div class="w-full h-40 relative rounded-[2rem] mb-6 overflow-hidden bg-[#0F172A] shadow-inner"><img src="${c.img}" ${fallbackUI} class="w-full h-full object-cover"></div><h4 class="text-lg font-black text-white mb-1 uppercase italic tracking-tighter">${c.name}</h4><p class="text-indigo-400 font-black text-xl mb-6 price-badge italic">Rp ${c.price} <span class="text-[9px] text-slate-500 font-normal block">/ 12 Jam</span></p><button onclick="openRentalModal('${c.id}')" class="w-full mt-auto py-3.5 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi & Sewa</button></div>`).join('');
+            document.getElementById('car-grid').innerHTML = rentalData.map(c => `<div class="glass p-6 rounded-[2.5rem] text-center hover:border-indigo-500 transition duration-500 flex flex-col h-full"><div class="w-full h-40 relative rounded-[2rem] mb-6 overflow-hidden bg-[#0F172A] shadow-inner"><img src="${c.img}" ${fallbackUI} class="w-full h-full object-cover"></div><h4 class="text-lg font-black text-white mb-1 uppercase italic tracking-tighter">${c.name}</h4><p class="text-indigo-400 font-black text-xl mb-6 price-badge italic">Rp ${c.price} <span class="text-[9px] text-slate-500 font-normal block mt-1">/ 12 Jam</span></p><button onclick="openRentalModal('${c.id}')" class="w-full mt-auto py-3.5 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi & Sewa</button></div>`).join('');
             
             document.getElementById('tour-grid').innerHTML = tourData.map(t => {
                 let totalH = t.harga_base + t.harga_kamar;
-                return `<div class="glass rounded-[2.5rem] md:rounded-[3rem] overflow-hidden group border border-white/5 shadow-2xl flex flex-col relative"><div class="h-48 md:h-64 overflow-hidden relative bg-[#0F172A]"><img src="${t.img}" ${fallbackUI} class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition duration-700"><div class="absolute top-4 left-4 z-10"><span class="bg-indigo-600/90 backdrop-blur text-white px-4 py-2 rounded-full font-black text-[10px] md:text-xs shadow-xl border border-white/10 price-badge">Rp ${totalH.toLocaleString('id-ID')} / Pax</span></div></div><div class="p-8 text-center flex-1 flex flex-col justify-between"><h3 class="text-xl md:text-2xl font-black text-white mb-2 uppercase italic italic tracking-tighter">${t.name}</h3><p class="text-[9px] text-green-400 font-bold uppercase tracking-[0.2em] mb-6">Makan & Oleh-oleh Includ!</p><button onclick="bukaModalPilihKursi('wisata', '${t.id}')" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Detail & Kursi</button></div></div>`;
+                return `<div class="glass rounded-[2.5rem] md:rounded-[3rem] overflow-hidden group border border-white/5 shadow-2xl flex flex-col relative"><div class="h-48 md:h-64 overflow-hidden relative bg-[#0F172A]"><img src="${t.img}" ${fallbackUI} class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition duration-700"><div class="absolute top-4 left-4 z-10"><span class="bg-indigo-600/90 backdrop-blur text-white px-4 py-2 rounded-full font-black text-[10px] md:text-xs shadow-xl border border-white/10 price-badge">Rp ${totalH.toLocaleString('id-ID')} / Pax</span></div></div><div class="p-8 text-center flex-1 flex flex-col justify-between"><h3 class="text-xl md:text-2xl font-black text-white mb-2 uppercase italic tracking-tighter">${t.name}</h3><p class="text-[9px] text-green-400 font-bold uppercase tracking-[0.2em] mb-6">Makan & Oleh-oleh Termasuk!</p><button onclick="bukaModalPilihKursi('wisata', '${t.id}')" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Detail & Kursi</button></div></div>`;
             }).join('');
         }
 
-        // GRID KURSI HIACE (PRESISI GRID)
         function generateSeatHTML(bookedArray) {
             let html = '<div class="grid grid-cols-4 gap-2 md:gap-3 max-w-[280px] mx-auto">';
             const seat = (i) => {
                 const isB = bookedArray.includes(i);
-                return `<div class="seat w-full border rounded-xl flex items-center justify-center font-black text-xs md:text-sm ${isB ? 'bg-slate-800 text-slate-600 cursor-not-allowed border-slate-700' : 'bg-white/5 text-slate-300 border-white/20 hover:border-indigo-400 cursor-pointer'}" id="seat-${i}" ${isB ? '' : `onclick="toggleKursi(${i})"`}>${i}</div>`;
+                return `<div class="seat w-full border rounded-xl flex items-center justify-center font-black text-xs md:text-sm ${isB ? 'bg-slate-800 text-slate-600 cursor-not-allowed border-slate-700' : 'bg-white/5 text-slate-300 border-white/20 hover:border-indigo-400 hover:bg-white/10 cursor-pointer shadow-lg'}" id="seat-${i}" ${isB ? '' : `onclick="toggleKursi(${i})"`}>${i}</div>`;
             };
             const blank = `<div></div>`;
-            const driver = `<div class="w-full bg-slate-800/50 rounded-xl flex items-center justify-center border border-slate-700 text-slate-500 cursor-not-allowed"><i class="fas fa-steering-wheel text-xs"></i></div>`;
+            const driver = `<div class="w-full aspect-square bg-slate-800/50 rounded-xl flex items-center justify-center border border-slate-700 text-slate-500 cursor-not-allowed shadow-inner"><i class="fas fa-steering-wheel text-xs md:text-sm"></i></div>`;
             
             html += seat(1) + blank + blank + driver;
             html += seat(2) + blank + seat(3) + seat(4);
@@ -215,23 +217,29 @@
                 let n = document.getElementById('nama-'+k), t = document.getElementById('telp-'+k), a = document.getElementById('alamat-'+k);
                 if(n) saved[k] = { n: n.value, t: t.value, a: a.value };
             });
+            
             if(kursiTerpilih.length === 0) {
-                container.innerHTML = `<div class="text-center p-6 bg-white/5 border border-white/10 rounded-2xl text-slate-500 text-[10px] font-bold">Pilih kursi di denah untuk mengisi manifest.</div>`;
+                container.innerHTML = ``;
                 return;
             }
-            let formHTML = '<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">3. Data Manifest Penumpang:</h4>';
+            
+            let formHTML = '<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">3. Lengkapi Data Penumpang:</h4>';
             kursiTerpilih.sort((a,b)=>a-b).forEach(k => {
                 let d = saved[k] || {n:'', t:'', a:''};
-                formHTML += `<div class="mb-4 p-5 bg-white/5 rounded-2xl border border-white/10"><p class="text-[10px] font-black text-indigo-400 mb-4 uppercase tracking-widest border-b border-white/10 pb-2">Kursi ${k}</p><input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 mb-2"><input type="tel" id="telp-${k}" value="${d.t}" placeholder="WA Aktif" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 mb-2"><textarea id="alamat-${k}" placeholder="Titik Jemput" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 h-14">${d.a}</textarea></div>`;
+                formHTML += `<div class="mb-4 p-5 bg-white/5 rounded-2xl border border-white/10 shadow-inner"><p class="text-[10px] font-black text-indigo-400 mb-4 uppercase tracking-widest border-b border-white/10 pb-2">Penumpang Kursi ${k}</p><input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 mb-2"><input type="tel" id="telp-${k}" value="${d.t}" placeholder="WA Aktif" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 mb-2"><textarea id="alamat-${k}" placeholder="Titik Jemput Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 h-16">${d.a}</textarea></div>`;
             });
             container.innerHTML = formHTML;
         }
 
         function pilihJam(id, txt) {
             jamAktif = txt;
-            document.querySelectorAll('.jam-btn').forEach(b => { b.classList.remove('bg-indigo-600','text-white'); b.classList.add('bg-white/5','text-slate-300'); });
-            document.getElementById(id).classList.replace('bg-white/5','bg-indigo-600');
-            document.getElementById(id).classList.replace('text-slate-300','text-white');
+            document.querySelectorAll('.jam-btn').forEach(b => { 
+                b.classList.remove('bg-indigo-600','text-white'); 
+                b.classList.add('bg-white/5','text-slate-300'); 
+            });
+            const btn = document.getElementById(id);
+            btn.classList.remove('bg-white/5','text-slate-300');
+            btn.classList.add('bg-indigo-600','text-white');
         }
 
         function bukaModalPilihKursi(type, id) {
@@ -242,13 +250,38 @@
 
             if(type === 'shuttle') {
                 dataAktif = travelData.find(x => x.id === id);
-                infoHTML = `<h2 class="text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${dataAktif.rute}</h2><p class="text-slate-500 mb-6 font-bold text-xs">Rp ${dataAktif.harga.toLocaleString('id-ID')} / Seat</p><div class="space-y-4 mb-6 border-y border-white/10 py-6"><div><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">Pilih Hari:</label><select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none">${hariS}</select></div><div><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">Pilih Jam Berangkat:</label><div class="flex flex-wrap gap-2">${dataAktif.waktu.map((w, i) => `<button id="j-${i}" onclick="pilihJam('j-${i}', '${w}')" class="jam-btn bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] font-bold text-slate-300 transition whitespace-nowrap">${w}</button>`).join('')}</div></div></div><div id="dynamic-forms" class="max-h-[350px] overflow-y-auto custom-scroll pr-2"></div>`;
+                infoHTML = `<h2 class="text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter pr-8">${dataAktif.rute}</h2><p class="text-slate-400 mb-6 font-bold text-xs">Rp ${dataAktif.harga.toLocaleString('id-ID')} / Seat</p><div class="space-y-4 border-t border-white/10 pt-6"><div><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Hari:</label><select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none">${hariS}</select></div><div><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">2. Pilih Jam:</label><div class="flex flex-wrap gap-2">${dataAktif.waktu.map((w, i) => `<button id="j-${i}" onclick="pilihJam('j-${i}', '${w}')" class="jam-btn bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] font-bold text-slate-300 transition whitespace-nowrap">${w}</button>`).join('')}</div></div></div>`;
             } else {
                 dataAktif = tourData.find(x => x.id === id);
-                infoHTML = `<h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter">${dataAktif.name}</h2><div class="bg-indigo-600/10 p-4 rounded-xl border border-indigo-500/20 text-[11px] mb-6"><span class="font-bold text-white block">🚗 Biaya Jalan: Rp ${dataAktif.harga_base.toLocaleString('id-ID')}</span>${dataAktif.harga_kamar > 0 ? `<span class="font-bold text-indigo-400 block mt-1 italic">🏨 Sharing Kamar (Min 2 Seat) Aktif!</span>` : ''}</div><div class="mb-6"><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">Pilih Keberangkatan:</label><select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none">${tripS}</select></div><div id="dynamic-forms" class="border-t border-white/10 pt-6 max-h-[250px] overflow-y-auto custom-scroll pr-2 mb-6"></div><div class="border-t border-white/10 pt-4"><h4 class="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-3">Rundown (Include Makan & Belanja):</h4><div class="max-h-[150px] overflow-y-auto custom-scroll pr-2">${dataAktif.jadwal.map(h => `<div class="mb-4"><h5 class="text-indigo-400 font-bold text-[10px] mb-2"><i class="fas fa-flag mr-2"></i>${h.hari}</h5><div class="pl-3 border-l border-white/10 space-y-2">${h.acara.map(a => `<div class="text-[10px] text-slate-300 flex"><span class="font-bold text-white w-10 shrink-0">${a.jam}</span> <span>${a.giat}</span></div>`).join('')}</div></div>`).join('')}</div></div>`;
+                infoHTML = `<h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter pr-8">${dataAktif.name}</h2><div class="bg-indigo-600/10 p-4 rounded-xl border border-indigo-500/20 text-[11px] mb-6"><span class="font-bold text-white block">🚗 Biaya Jalan: Rp ${dataAktif.harga_base.toLocaleString('id-ID')}</span>${dataAktif.harga_kamar > 0 ? `<span class="font-bold text-indigo-400 block mt-1 italic">🏨 Sharing Kamar (Min 2 Seat) Aktif!</span>` : ''}</div><div class="mb-6"><label class="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Keberangkatan:</label><select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none">${tripS}</select></div><div class="border-t border-white/10 pt-6"><h4 class="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-3">Rundown Perjalanan:</h4><div class="max-h-[250px] overflow-y-auto custom-scroll pr-2">${dataAktif.jadwal.map(h => `<div class="mb-4"><h5 class="text-indigo-400 font-bold text-[10px] mb-2"><i class="fas fa-flag mr-2"></i>${h.hari}</h5><div class="pl-3 border-l border-white/10 space-y-2">${h.acara.map(a => `<div class="text-[10px] text-slate-300 flex"><span class="font-bold text-white w-10 shrink-0">${a.jam}</span> <span>${a.giat}</span></div>`).join('')}</div></div>`).join('')}</div></div>`;
             }
 
-            document.getElementById('modal-content').innerHTML = `<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"><div>${infoHTML}</div><div class="bg-white/5 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-inner lg:sticky lg:top-0 h-fit"><h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Pilih Denah Kursi:</h3><div class="flex justify-center gap-3 mb-6 text-[8px] uppercase font-bold text-slate-500"><span class="flex items-center gap-1"><div class="w-3 h-3 border border-white/20 rounded-sm"></div> Kosong</span><span class="flex items-center gap-1"><div class="w-3 h-3 bg-indigo-600 rounded-sm"></div> Pilih</span></div>${generateSeatHTML(dataAktif.bookedSeats)}<div class="mt-8 pt-6 border-t border-white/10 space-y-2 font-bold"><div class="flex justify-between text-slate-400 text-xs"><span>No. Kursi:</span><span id="seat-display" class="text-white">-</span></div><div class="flex justify-between text-indigo-400 text-xl font-black pt-2"><span>Total:</span><span id="price-display">Rp 0</span></div></div><button onclick="prosesWA()" class="mt-6 w-full bg-green-600 text-white py-4 rounded-2xl font-black text-xs uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2 text-lg"></i> Checkout ke WA</button></div></div>`;
+            document.getElementById('modal-content').innerHTML = `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <div>${infoHTML}</div>
+                <div class="bg-white/5 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-inner">
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Pilih Denah Kursi:</h3>
+                    
+                    <div class="flex justify-center gap-3 mb-6 text-[8px] uppercase font-bold text-slate-500">
+                        <span class="flex items-center gap-1"><div class="w-3 h-3 border border-white/20 rounded-sm"></div> Kosong</span>
+                        <span class="flex items-center gap-1"><div class="w-3 h-3 bg-indigo-600 rounded-sm"></div> Pilih</span>
+                    </div>
+                    
+                    ${generateSeatHTML(dataAktif.bookedSeats)}
+                    
+                    <div id="dynamic-forms" class="mt-8"></div>
+                    
+                    <div class="mt-8 border-t border-white/10 pt-6 space-y-2 font-bold">
+                        <div class="flex justify-between text-slate-400 text-xs"><span>No. Kursi:</span><span id="seat-display" class="text-white">-</span></div>
+                        <div class="flex justify-between text-indigo-400 text-xl font-black pt-2"><span>Total:</span><span id="price-display" class="price-badge">Rp 0</span></div>
+                    </div>
+                    
+                    <button onclick="prosesWA()" class="mt-6 w-full bg-green-600 text-white py-4 rounded-2xl font-black text-xs uppercase italic shadow-2xl hover:bg-green-700 transition">
+                        <i class="fab fa-whatsapp mr-2 text-lg"></i> Checkout ke WA
+                    </button>
+                </div>
+            </div>`;
+            
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
             renderDynamicForms();
@@ -259,7 +292,9 @@
             if(i > -1) kursiTerpilih.splice(i, 1); else kursiTerpilih.push(n);
             document.getElementById('seat-'+n).classList.toggle('selected');
             document.getElementById('seat-display').innerText = kursiTerpilih.length > 0 ? kursiTerpilih.sort((a,b)=>a-b).join(', ') : '-';
+            
             renderDynamicForms();
+            
             let total = 0;
             if(tipeLayanan === 'shuttle') total = kursiTerpilih.length * dataAktif.harga;
             else total = (kursiTerpilih.length * dataAktif.harga_base) + (Math.ceil(kursiTerpilih.length / 2) * dataAktif.harga_kamar);
@@ -272,43 +307,85 @@
             let manifest = "";
             for(let k of kursiTerpilih.sort((a,b)=>a-b)) {
                 let n = document.getElementById('nama-'+k).value, t = document.getElementById('telp-'+k).value, a = document.getElementById('alamat-'+k).value;
-                if(!n || !t || !a) return alert(`Lengkapi data manifest Kursi ${k}!`);
+                if(!n || !t || !a) return alert(`Lengkapi data manifest Penumpang Kursi ${k}!`);
                 manifest += `\n*Kursi ${k}*\n- Nama: ${n}\n- WA: ${t}\n- Jemput: ${a}\n`;
             }
             let total = document.getElementById('price-display').innerText;
-            let text = `*FORM MANIFEST AURORA TRAVEL*\n\n*LAYANAN:* ${dataAktif.rute || dataAktif.name}\n*HARI:* ${h}\n${tipeLayanan==='shuttle' ? `*JAM:* ${jamAktif}\n` : ''}*TOTAL PAX:* ${kursiTerpilih.length}\n\n*DATA MANIFEST:*${manifest}\n\n*TAGIHAN:* ${total}\n\nMohon info rekening, min.`;
+            let text = `*FORM MANIFEST AURORA TRAVEL*\n\n*LAYANAN:* ${dataAktif.rute || dataAktif.name}\n*HARI:* ${h}\n${tipeLayanan==='shuttle' ? `*JAM:* ${jamAktif}\n` : ''}*TOTAL PAX:* ${kursiTerpilih.length} Orang\n\n*DATA MANIFEST:*${manifest}\n\n*TAGIHAN:* ${total}\n\nMohon info ketersediaan dan nomor rekening.`;
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         function openRentalModal(id) {
             const c = rentalData.find(x => x.id === id);
             let fHTML = c.f.map(f => `<span class="bg-indigo-600/10 text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-lg text-[10px] whitespace-nowrap"><i class="fas fa-check-circle mr-1"></i>${f}</span>`).join('');
-            document.getElementById('modal-content').innerHTML = `<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"><div class="w-full h-56 md:h-96 rounded-[2rem] overflow-hidden bg-[#0F172A]"><img src="${c.img}" ${fallbackUI} class="w-full h-full object-cover"></div><div><h2 class="text-3xl font-black text-indigo-400 mb-2 uppercase italic">${c.name}</h2><p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-5">${c.specs.t} | ${c.specs.m}</p><div class="flex flex-wrap gap-2 mb-8">${fHTML}</div><div class="space-y-3 mb-6 border-t border-white/10 pt-6"><input type="text" id="r-n" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white"><input type="date" id="r-t" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white"><select id="r-l" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white"><option>Sopir + Unit</option><option>Lepas Kunci</option></select><textarea id="r-a" placeholder="Alamat Jemput" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white"></textarea></div><button onclick="prosesRental('${c.name}')" class="w-full bg-green-600 text-white py-4 rounded-xl font-black text-xs uppercase italic shadow-2xl">Lanjut Booking</button></div></div>`;
+            document.getElementById('modal-content').innerHTML = `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <div class="w-full h-56 md:h-96 rounded-[2rem] overflow-hidden bg-[#0F172A] sticky top-0">
+                    <img src="${c.img}" ${fallbackUI} class="w-full h-full object-cover">
+                </div>
+                <div class="pt-2 md:pt-0">
+                    <h2 class="text-3xl font-black text-indigo-400 mb-2 uppercase italic pr-8">${c.name}</h2>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-5">${c.specs.t} | ${c.specs.m}</p>
+                    <div class="flex flex-wrap gap-2 mb-8">${fHTML}</div>
+                    <div class="space-y-3 mb-6 border-t border-white/10 pt-6">
+                        <input type="text" id="r-n" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500">
+                        <input type="date" id="r-t" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500">
+                        <select id="r-l" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500">
+                            <option value="" disabled selected>Pilih Layanan</option>
+                            <option>Sopir + Unit</option>
+                            <option>Lepas Kunci</option>
+                        </select>
+                        <textarea id="r-a" placeholder="Alamat Jemput Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs text-white outline-none focus:border-indigo-500 h-16"></textarea>
+                    </div>
+                    <button onclick="prosesRental('${c.name}')" class="w-full bg-green-600 text-white py-4 rounded-xl font-black text-xs uppercase italic shadow-2xl hover:bg-green-700 transition">
+                        Lanjut Booking WA
+                    </button>
+                </div>
+            </div>`;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
         }
 
         function prosesRental(nU) {
             let n = document.getElementById('r-n').value, t = document.getElementById('r-t').value, l = document.getElementById('r-l').value, a = document.getElementById('r-a').value;
-            if(!n || !t || !a) return alert("Lengkapi data sewa!");
+            if(!n || !t || !l || !a) return alert("Mohon lengkapi seluruh form data sewa!");
             let text = `*SEWA MOBIL AURORA*\n\n*UNIT:* ${nU}\n*NAMA:* ${n}\n*TGL:* ${t}\n*LAYANAN:* ${l}\n*ALAMAT:* ${a}\n\nMohon info ketersediaan unit.`;
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         function bukaModalTnC() {
-            document.getElementById('modal-content').innerHTML = `<h2 class="text-2xl font-black text-indigo-400 mb-6 uppercase italic">Syarat & Ketentuan</h2><div class="space-y-4 text-xs text-slate-400 leading-relaxed max-h-[60vh] overflow-y-auto pr-4"><div><b class="text-white block mb-1">1. Reservasi:</b> DP minimal 30% untuk kunci jadwal. Pelunasan saat hari H penjemputan.</div><div><b class="text-white block mb-1">2. Pembatalan:</b> H-1 cancel potong 50% DP. Hari H cancel DP hangus.</div><div><b class="text-white block mb-1">3. Bagasi:</b> Maksimal 1 koper sedang + 1 tas kabin per orang. Kehilangan barang berharga di luar tanggung jawab kami.</div></div><button onclick="closeModal()" class="mt-8 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase">Saya Paham</button>`;
+            document.getElementById('modal-content').innerHTML = `
+            <div class="max-w-2xl mx-auto pt-4 md:pt-0">
+                <h2 class="text-2xl font-black text-indigo-400 mb-6 uppercase italic pr-8">Syarat & Ketentuan</h2>
+                <div class="space-y-4 text-xs text-slate-400 leading-relaxed pr-4">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><b class="text-white block mb-2"><i class="fas fa-wallet mr-2 text-indigo-500"></i>1. Reservasi:</b> DP minimal 30% untuk kunci jadwal. Pelunasan saat hari H penjemputan.</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><b class="text-white block mb-2"><i class="fas fa-ban mr-2 text-indigo-500"></i>2. Pembatalan:</b> H-1 cancel dipotong 50% DP. Hari H cancel DP hangus seluruhnya.</div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><b class="text-white block mb-2"><i class="fas fa-suitcase mr-2 text-indigo-500"></i>3. Bagasi:</b> Maksimal 1 koper sedang + 1 tas kabin per orang. Kehilangan barang berharga di luar tanggung jawab kami.</div>
+                </div>
+                <button onclick="closeModal()" class="mt-8 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase w-full md:w-auto">Saya Mengerti</button>
+            </div>`;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
         }
 
         function bukaModalPrivasi() {
-            document.getElementById('modal-content').innerHTML = `<h2 class="text-2xl font-black text-indigo-400 mb-6 uppercase italic">Kebijakan Privasi</h2><div class="space-y-4 text-xs text-slate-400 leading-relaxed">Data Nama, WA, dan Alamat Anda digunakan murni untuk keperluan manifest asuransi Jasa Raharja dan operasional penjemputan. Kami menjamin data tidak akan disalahgunakan.</div><button onclick="closeModal()" class="mt-8 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase">Tutup</button>`;
+            document.getElementById('modal-content').innerHTML = `
+            <div class="max-w-2xl mx-auto pt-4 md:pt-0">
+                <h2 class="text-2xl font-black text-indigo-400 mb-6 uppercase italic pr-8">Kebijakan Privasi</h2>
+                <div class="space-y-4 text-xs text-slate-400 leading-relaxed">
+                    <div class="bg-white/5 p-5 rounded-xl border border-white/10">
+                        Data privasi Anda (Nama, No. WhatsApp, dan Alamat Titik Jemput) dikumpulkan secara eksklusif untuk keperluan operasional <b>Aurora Travel & Rental</b>. Data ini diperlukan untuk manifest asuransi perjalanan (Jasa Raharja) serta koordinasi penjemputan oleh driver kami di lapangan. Kami menjamin 100% data Anda tidak akan dibagikan atau dijual ke pihak ketiga manapun.
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="mt-8 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase w-full md:w-auto">Tutup</button>
+            </div>`;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
         }
 
         function closeModal() { document.getElementById('modal').classList.add('hidden'); document.body.classList.remove('modal-active'); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        
         renderAll();
     </script>
 </body>
