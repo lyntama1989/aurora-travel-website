@@ -156,7 +156,7 @@
         let tipeLayanan = "";
 
         /* ====================================================
-           DATABASE (SERVER WIKIMEDIA ANTI-MATI)
+           DATABASE 
            ==================================================== */
         const travelData = [
             { id: 'madiun-juanda', rute: 'Madiun - Bandara Juanda PP', harga: 185000, waktu: ['03:00', '09:00', '15:00', '21:00'], bookedSeats: [] },
@@ -170,11 +170,12 @@
             { id: 'bali', name: 'Overland Bali (Madiun)', harga_base: 1850000, harga_kamar: 600000, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Pura_Ulun_Danu_Bratan_-_Bali.jpg/800px-Pura_Ulun_Danu_Bratan_-_Bali.jpg', ket: '3 Hari 2 Malam', hotel: 'Harris Hotel Kuta ⭐⭐⭐⭐', bookedSeats: [], jadwal: [ { hari: 'Hari 1', acara: [ { jam: '15:00', giat: 'Jemput Madiun' }, { jam: '23:00', giat: 'Tiba Ketapang' } ] }, { hari: 'Hari 2', acara: [ { jam: '01:00', giat: 'Penyeberangan' }, { jam: '10:00', giat: 'Tanah Lot' }, { jam: '14:00', giat: 'Check-in Hotel' }, { jam: '16:00', giat: 'Uluwatu & Jimbaran' } ] }, { hari: 'Hari 3', acara: [ { jam: '08:00', giat: 'Check-out' }, { jam: '12:00', giat: 'Kintamani' }, { jam: '15:00', giat: 'Belanja' }, { jam: '19:00', giat: 'Menyeberang ke Jawa' } ] }, { hari: 'Hari 4', acara: [ { jam: '05:00', giat: 'Tiba di Madiun' } ] } ] }
         ];
 
+        // DATA RENTAL DENGAN FASILITAS LENGKAP
         const rentalData = [
-            { id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg/800px-2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg', specs: { trans: 'Manual/Matic', mesin: '2.000cc Hybrid', tahun: '2023-2024', bbm: 'Pertamax' }, fasilitas: ['Captain Seat', 'Panoramic Roof', 'AC Blower'] },
-            { id: 'avanza', name: 'Toyota New Avanza', price: '450.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2021_Toyota_Avanza_1.5_G.jpg/800px-2021_Toyota_Avanza_1.5_G.jpg', specs: { trans: 'Manual/Matic', mesin: '1.500cc VVT-i', tahun: '2022-2024', bbm: 'Pertalite' }, fasilitas: ['Kabin 7 Penumpang', 'Irit BBM', 'Charger'] },
-            { id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2019_Toyota_HiAce_Premio_2.8.jpg/800px-2019_Toyota_HiAce_Premio_2.8.jpg', specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Diesel', tahun: '2023', bbm: 'Dexlite' }, fasilitas: ['14 Kursi Reclining', 'Audio Karaoke', 'AC Per Kepala'] },
-            { id: 'alphard', name: 'Toyota Alphard Exec', price: '2.800.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/2023_Toyota_Alphard_Executive_Lounge.jpg/800px-2023_Toyota_Alphard_Executive_Lounge.jpg', specs: { trans: 'Automatic', mesin: '2.500cc VVT-i', tahun: '2023', bbm: 'Pertamax Turbo' }, fasilitas: ['Pilot Seat', 'Power Door', 'Sunroof'] }
+            { id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg/800px-2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg', specs: { trans: 'Manual/Matic', mesin: '2.000cc Hybrid', tahun: '2023-2024', bbm: 'Pertamax' }, fasilitas: ['Captain Seat', 'Panoramic Roof', 'AC Double Blower', 'Smart TV'] },
+            { id: 'avanza', name: 'Toyota New Avanza', price: '450.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2021_Toyota_Avanza_1.5_G.jpg/800px-2021_Toyota_Avanza_1.5_G.jpg', specs: { trans: 'Manual/Matic', mesin: '1.500cc VVT-i', tahun: '2022-2024', bbm: 'Pertalite' }, fasilitas: ['Kabin 7 Penumpang', 'Irit BBM', 'Colokan Charger Full'] },
+            { id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2019_Toyota_HiAce_Premio_2.8.jpg/800px-2019_Toyota_HiAce_Premio_2.8.jpg', specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Diesel', tahun: '2023', bbm: 'Dexlite' }, fasilitas: ['14 Kursi Reclining', 'Audio Karaoke Android', 'AC Per Kepala', 'Lampu Kabin VIP'] },
+            { id: 'alphard', name: 'Toyota Alphard Exec', price: '2.800.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/2023_Toyota_Alphard_Executive_Lounge.jpg/800px-2023_Toyota_Alphard_Executive_Lounge.jpg', specs: { trans: 'Automatic', mesin: '2.500cc VVT-i', tahun: '2023', bbm: 'Pertamax Turbo' }, fasilitas: ['Pilot Seat Massage', 'Power Slider Door', 'Dual Sunroof', 'Privasi Maksimal'] }
         ];
 
         /* ====================================================
@@ -392,9 +393,13 @@
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // BUKA MODAL RENTAL
+        // BUKA MODAL RENTAL (SEKARANG DILENGKAPI FASILITAS)
         function openRentalModal(id) {
             const c = rentalData.find(x => x.id === id);
+            
+            // GENERATE BADGE FASILITAS
+            let fasilitasHTML = c.fasilitas.map(f => `<span class="bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 px-3 py-1.5 rounded-lg text-[10px] md:text-xs whitespace-nowrap"><i class="fas fa-check-circle mr-1"></i>${f}</span>`).join('');
+
             document.getElementById('modal-content').innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <div class="w-full h-56 md:h-96 relative rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-[#0F172A] shadow-2xl border border-white/5">
@@ -405,10 +410,17 @@
                     </div>
                     <div>
                         <h2 class="text-3xl md:text-4xl font-black text-indigo-400 mb-6 uppercase italic">${c.name}</h2>
-                        <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6 text-xs md:text-sm font-bold bg-white/5 p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem]">
+                        
+                        <div class="grid grid-cols-2 gap-3 md:gap-4 mb-5 text-xs md:text-sm font-bold bg-white/5 p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem]">
                             <div><p class="text-[9px] md:text-[10px] text-slate-500 uppercase">Transmisi</p><p class="text-white">${c.specs.trans}</p></div>
                             <div><p class="text-[9px] md:text-[10px] text-slate-500 uppercase">Mesin (CC)</p><p class="text-white">${c.specs.mesin}</p></div>
                         </div>
+
+                        <div class="mb-6">
+                            <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-3">Fasilitas Unit:</p>
+                            <div class="flex flex-wrap gap-2">${fasilitasHTML}</div>
+                        </div>
+
                         <div class="space-y-3 mb-6 border-t border-white/10 pt-6">
                             <label class="block text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Lengkapi Data Sewa:</label>
                             <input type="text" id="rent-nama" placeholder="Nama Penyewa Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-xs md:text-sm text-white outline-none focus:border-indigo-500">
