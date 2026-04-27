@@ -14,7 +14,6 @@
         .font-utama { font-weight: 800; text-transform: uppercase; font-style: italic; }
         .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* CSS Kursi Hiace & Interaksi */
         .seat { transition: all 0.3s ease; }
         .seat:hover:not(.booked) { border-color: #6366f1; transform: scale(1.05); }
         .seat.selected { background-color: #4f46e5; color: white; border-color: #4f46e5; box-shadow: 0 0 15px rgba(79,70,229,0.5); }
@@ -55,56 +54,57 @@
         <div class="relative z-10 max-w-5xl">
             <p class="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">Madiun Premium Travel & Rental</p>
             <h1 class="text-5xl md:text-8xl font-utama mb-8 leading-[0.9] tracking-tighter">Pilih Jadwalmu, <br> <span class="gradient-text">Pesan Kursimu.</span></h1>
-            <p class="text-slate-400 text-lg md:text-xl mb-12 font-light max-w-3xl mx-auto leading-relaxed">Sistem pemesanan tiket travel antar kota dan paket wisata cerdas dengan form manifest dinamis. Transparan, hemat, dan profesional.</p>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="#shuttle" class="bg-white text-slate-900 px-12 py-5 rounded-[2.5rem] font-bold hover:scale-105 transition shadow-2xl uppercase italic tracking-tighter">Pesan Travel</a>
-                <a href="#wisata" class="border border-white/20 text-white px-12 py-5 rounded-[2.5rem] font-bold hover:bg-white/10 transition uppercase italic tracking-tighter">Open Trip Wisata</a>
+            <p class="text-slate-400 text-base md:text-xl mb-12 font-light max-w-3xl mx-auto leading-relaxed">Sistem pemesanan tiket terintegrasi dengan pengisian manifest penumpang secara presisi. Transparan, rapi, dan profesional.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                <a href="#shuttle" class="bg-white text-slate-900 px-10 md:px-12 py-4 md:py-5 rounded-full font-bold hover:scale-105 transition shadow-2xl uppercase italic tracking-tighter text-sm md:text-base">Pesan Travel</a>
+                <a href="#wisata" class="border border-white/20 text-white px-10 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-white/10 transition uppercase italic tracking-tighter text-sm md:text-base">Open Trip Wisata</a>
             </div>
         </div>
     </section>
 
-    <section id="shuttle" class="py-32 container mx-auto px-6">
-        <div class="text-center mb-20 border-b border-white/5 pb-10">
-            <h2 class="text-4xl md:text-5xl font-utama mb-4">Shuttle <span class="text-indigo-500">Antar Kota</span></h2>
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg">Menggunakan armada Hiace Premio Executive (14 Seat). Keberangkatan setiap hari.</p>
+    <section id="shuttle" class="py-24 md:py-32 container mx-auto px-6">
+        <div class="text-center mb-16 md:mb-20 border-b border-white/5 pb-10">
+            <h2 class="text-3xl md:text-5xl font-utama mb-4">Shuttle <span class="text-indigo-500">Antar Kota</span></h2>
+            <p class="text-slate-500 max-w-2xl mx-auto text-sm md:text-lg">Menggunakan armada Hiace Premio Executive (14 Seat). Keberangkatan setiap hari.</p>
         </div>
-        <div id="shuttle-grid" class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
+        <div id="shuttle-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto"></div>
     </section>
 
-    <section id="rental" class="py-32 container mx-auto px-6">
-        <div class="mb-20 text-center md:text-left border-l-4 border-indigo-600 pl-8 lg:pl-10">
-            <h2 class="text-4xl md:text-5xl font-utama mb-4">Sewa Armada</h2>
-            <p class="text-slate-500 max-w-xl text-lg mx-auto md:mx-0">Unit muda keluaran 2023-2024. Melayani penyewaan dengan sopir profesional maupun lepas kunci.</p>
+    <section id="rental" class="py-24 md:py-32 container mx-auto px-6">
+        <div class="mb-16 md:mb-20 text-center md:text-left border-l-0 md:border-l-4 border-indigo-600 pl-0 md:pl-8">
+            <h2 class="text-3xl md:text-5xl font-utama mb-4">Sewa <span class="text-indigo-500">Armada</span></h2>
+            <p class="text-slate-500 max-w-xl text-sm md:text-lg mx-auto md:mx-0">Unit muda keluaran 2023-2024. Melayani penyewaan dengan sopir profesional maupun lepas kunci.</p>
         </div>
-        <div id="car-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-10"></div>
+        <div id="car-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10"></div>
     </section>
 
-    <section id="wisata" class="py-32 bg-[#0F172A]/50 rounded-[5rem] mx-4 px-6 border border-white/5 shadow-2xl">
+    <section id="wisata" class="py-24 md:py-32 bg-[#0F172A]/50 rounded-[3rem] md:rounded-[5rem] mx-4 md:mx-6 px-6 border border-white/5 shadow-2xl">
         <div class="container mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-6xl font-utama mb-6 tracking-tighter italic">Open Trip <span class="text-indigo-500">Wisata</span></h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">Pesan lebih dari 1 kursi untuk otomatis berbagi biaya HPP Kamar Hotel. Semakin banyak, semakin hemat per-orangnya!</p>
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-6xl font-utama mb-4 md:mb-6 tracking-tighter italic">Open Trip <span class="text-indigo-500">Wisata</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">Berangkat dari Madiun. Nikmati algoritma harga cerdas kami: dapatkan harga Sharing Room otomatis untuk pemesanan pasangan/keluarga.</p>
             </div>
-            <div id="tour-grid" class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto"></div>
+            <div id="tour-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto"></div>
         </div>
     </section>
 
     <div id="modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/98 backdrop-blur-xl" onclick="closeModal()"></div>
-        <div class="relative bg-[#020617] border border-white/10 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-[3.5rem] p-6 md:p-14 shadow-2xl custom-scroll">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-4xl transition z-50"><i class="fas fa-times"></i></button>
+        <div class="relative bg-[#020617] border border-white/10 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-14 shadow-2xl custom-scroll">
+            <button onclick="closeModal()" class="absolute top-6 right-6 md:top-8 md:right-8 text-slate-500 hover:text-white text-3xl md:text-4xl transition z-50"><i class="fas fa-times"></i></button>
             <div id="modal-content"></div>
         </div>
     </div>
 
-    <footer class="py-20 border-t border-white/5 text-center bg-[#01040f]">
+    <footer class="py-12 md:py-20 border-t border-white/5 text-center bg-[#01040f]">
         <p class="text-slate-700 text-[10px] font-bold uppercase tracking-[0.8em]">&copy; 2026 Aurora Travel & Rental Madiun</p>
     </footer>
 
     <script>
         const waNumber = "6282143463566";
-        // Fallback jika terjadi kegagalan jaringan ekstrim
-        const fallback = "onerror=\"this.onerror=null; this.src='https://placehold.co/800x500/1e293b/818cf8?text=Unit+Tersedia';\"";
+        
+        // FOTO CADANGAN ELEGAN (Anti Tulisan Numpuk, hanya blank solid color elegan)
+        const fallbackImg = "onerror=\"this.style.display='none'; this.nextElementSibling.style.display='block';\"";
         
         let kursiTerpilih = []; 
         let dataAktif = null;
@@ -112,21 +112,35 @@
         let tipeLayanan = "";
 
         /* ====================================================
-           DATABASE (DENGAN SERVER GAMBAR WIKIMEDIA ANTI-BLOKIR)
+           DATABASE (BROMO, JOGJA, PACITAN, BALI KEMBALI)
            ==================================================== */
 
-        // 1. DATA TRAVEL
         const travelData = [
             { id: 'madiun-juanda', rute: 'Madiun - Bandara Juanda PP', harga: 185000, waktu: ['03:00', '09:00', '15:00', '21:00'], bookedSeats: [] },
             { id: 'madiun-jogja', rute: 'Madiun - Yogyakarta (YIA) PP', harga: 165000, waktu: ['05:00', '13:00', '20:00'], bookedSeats: [] }
         ];
 
-        // 2. DATA WISATA (HPP HOTEL SHARING)
         const tourData = [
             { 
+                id: 'bromo', name: 'Midnight Bromo', 
+                harga_base: 350000, harga_kamar: 0, 
+                img: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=800&q=80', 
+                ket: 'Midnight Trip (PP)', hotel: 'Tanpa Menginap',
+                bookedSeats: [],
+                jadwal: [ { hari: 'Rundown', acara: [ { jam: '23:00', giat: 'Jemput Madiun' }, { jam: '02:30', giat: 'Transit Jeep Sukapura' }, { jam: '04:00', giat: 'Penanjakan Sunrise' }, { jam: '06:00', giat: 'Eksplor Kawah Bromo' }, { jam: '08:00', giat: 'Pasir Berbisik' }, { jam: '15:00', giat: 'Tiba Madiun' } ] } ]
+            },
+            { 
+                id: 'jogja-trip', name: 'One Day Trip Jogja', 
+                harga_base: 250000, harga_kamar: 0, 
+                img: 'https://images.unsplash.com/photo-1584853033504-2ee178d8f0f0?auto=format&fit=crop&w=800&q=80', 
+                ket: 'Sehari Selesai (PP)', hotel: 'Tanpa Menginap',
+                bookedSeats: [],
+                jadwal: [ { hari: 'Rundown', acara: [ { jam: '05:00', giat: 'Jemput Madiun' }, { jam: '08:00', giat: 'Candi Prambanan' }, { jam: '11:00', giat: 'HeHa Sky View' }, { jam: '14:00', giat: 'Malioboro' }, { jam: '21:00', giat: 'Tiba Madiun' } ] } ]
+            },
+            { 
                 id: 'pacitan', name: 'Open Trip Pacitan', 
-                harga_base: 850000, harga_kamar: 0, 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Pantai_Klayar_Pacitan.jpg/800px-Pantai_Klayar_Pacitan.jpg', 
+                harga_base: 200000, harga_kamar: 0, 
+                img: 'https://images.unsplash.com/photo-1628872451522-017300c09e3a?auto=format&fit=crop&w=800&q=80', 
                 ket: 'Sehari Selesai (PP)', hotel: 'Tanpa Menginap',
                 bookedSeats: [],
                 jadwal: [ { hari: 'Rundown', acara: [ { jam: '05:00', giat: 'Jemput Madiun' }, { jam: '08:30', giat: 'Goa Gong' }, { jam: '11:00', giat: 'Pantai Klayar' }, { jam: '14:30', giat: 'Pantai Kasap' }, { jam: '16:30', giat: 'Pantai Soge' }, { jam: '21:00', giat: 'Tiba Madiun' } ] } ]
@@ -134,42 +148,43 @@
             { 
                 id: 'bali', name: 'Overland Bali (Start Madiun)', 
                 harga_base: 1850000, harga_kamar: 600000, 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Pura_Ulun_Danu_Bratan_-_Bali.jpg/800px-Pura_Ulun_Danu_Bratan_-_Bali.jpg', 
+                img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80', 
                 ket: '3 Hari 2 Malam', hotel: 'Harris Hotel Kuta (Bintang 4) ⭐⭐⭐⭐',
                 bookedSeats: [],
                 jadwal: [ 
-                    { hari: 'Hari 1: Perjalanan', acara: [ { jam: '15:00', giat: 'Jemput Madiun' }, { jam: '23:00', giat: 'Tiba Pelabuhan Ketapang' } ] }, 
-                    { hari: 'Hari 2: Eksplorasi', acara: [ { jam: '01:00', giat: 'Penyeberangan' }, { jam: '07:00', giat: 'Sarapan' }, { jam: '10:00', giat: 'Pura Tanah Lot' }, { jam: '14:00', giat: 'Check-in Harris Hotel' }, { jam: '16:00', giat: 'Sunset Uluwatu' }, { jam: '19:30', giat: 'Dinner Jimbaran' } ] }, 
-                    { hari: 'Hari 3: Kembali', acara: [ { jam: '08:00', giat: 'Check-out Hotel' }, { jam: '12:00', giat: 'Kintamani' }, { jam: '15:00', giat: 'Belanja Krisna' }, { jam: '19:00', giat: 'Menyeberang ke Jawa' } ] },
-                    { hari: 'Hari 4: Tiba', acara: [ { jam: '05:00', giat: 'Tiba di Madiun' } ] }
+                    { hari: 'Hari 1', acara: [ { jam: '15:00', giat: 'Jemput Madiun' }, { jam: '23:00', giat: 'Tiba Ketapang' } ] }, 
+                    { hari: 'Hari 2', acara: [ { jam: '01:00', giat: 'Penyeberangan' }, { jam: '10:00', giat: 'Tanah Lot' }, { jam: '14:00', giat: 'Check-in Harris Hotel' }, { jam: '16:00', giat: 'Uluwatu' } ] }, 
+                    { hari: 'Hari 3', acara: [ { jam: '08:00', giat: 'Check-out Hotel' }, { jam: '12:00', giat: 'Kintamani' }, { jam: '15:00', giat: 'Belanja' }, { jam: '19:00', giat: 'Menyeberang ke Jawa' } ] },
+                    { hari: 'Hari 4', acara: [ { jam: '05:00', giat: 'Tiba Madiun' } ] }
                 ]
             }
         ];
 
-        // 3. DATA RENTAL MOBIL
         const rentalData = [
-            { id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg/800px-2022_Toyota_Kijang_Innova_Zenix_Q_Hybrid.jpg', specs: { trans: 'Manual/Matic', mesin: '2.000cc Hybrid', tahun: '2023-2024', bbm: 'Pertamax' }, fasilitas: ['Captain Seat', 'Panoramic Roof', 'AC Double Blower'] },
-            { id: 'avanza', name: 'Toyota New Avanza', price: '450.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2021_Toyota_Avanza_1.5_G.jpg/800px-2021_Toyota_Avanza_1.5_G.jpg', specs: { trans: 'Manual/Matic', mesin: '1.500cc Dual VVT-i', tahun: '2022-2024', bbm: 'Pertalite' }, fasilitas: ['Kabin 7 Penumpang', 'Irit Bahan Bakar', 'Colokan Charger Full'] },
-            { id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2019_Toyota_HiAce_Premio_2.8.jpg/800px-2019_Toyota_HiAce_Premio_2.8.jpg', specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Turbo Diesel', tahun: '2023', bbm: 'Dexlite' }, fasilitas: ['14 Kursi Reclining', 'Audio Karaoke TV', 'AC Per Kepala'] },
-            { id: 'alphard', name: 'Toyota Alphard Executive', price: '2.800.000', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/2023_Toyota_Alphard_Executive_Lounge.jpg/800px-2023_Toyota_Alphard_Executive_Lounge.jpg', specs: { trans: 'Automatic', mesin: '2.500cc VVT-i', tahun: '2023', bbm: 'Pertamax Turbo' }, fasilitas: ['Pilot Seat Massage', 'Power Slider Door', 'Dual Sunroof'] }
+            { id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual/Matic', mesin: '2.000cc Hybrid', tahun: '2023-2024', bbm: 'Pertamax' }, fasilitas: ['Captain Seat', 'Panoramic Roof', 'AC Double Blower'] },
+            { id: 'avanza', name: 'Toyota New Avanza', price: '450.000', img: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual/Matic', mesin: '1.500cc Dual VVT-i', tahun: '2022-2024', bbm: 'Pertalite' }, fasilitas: ['Kabin 7 Penumpang', 'Irit Bahan Bakar', 'Colokan Charger'] },
+            { id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', img: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Turbo Diesel', tahun: '2023', bbm: 'Dexlite' }, fasilitas: ['14 Kursi Reclining', 'Audio Karaoke', 'AC Per Kepala'] },
+            { id: 'alphard', name: 'Toyota Alphard Executive', price: '2.800.000', img: 'https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Automatic', mesin: '2.500cc VVT-i', tahun: '2023', bbm: 'Pertamax Turbo' }, fasilitas: ['Pilot Seat', 'Power Slider Door', 'Sunroof'] }
         ];
 
         /* ====================================================
-           FUNGSI RENDER TAMPILAN UTAMA
+           RENDER TAMPILAN ANTI-PECAH (RESPONSIVE)
            ==================================================== */
 
         function renderAll() {
-            document.getElementById('shuttle-grid').innerHTML = travelData.map(t => `<div class="glass p-10 rounded-[3rem] border border-white/5 hover:border-indigo-500 transition duration-500"><h3 class="text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h3><p class="text-3xl font-black text-white mb-6">Rp ${t.harga.toLocaleString('id-ID')} <span class="text-xs text-slate-500 font-normal">/ Kursi</span></p><div class="flex gap-2 mb-8 flex-wrap">${t.waktu.map(w => `<span class="bg-white/5 px-3 py-1 rounded-lg text-xs font-bold text-slate-300 border border-white/10">${w} WIB</span>`).join('')}</div><button onclick="bukaModalPilihKursi('shuttle', '${t.id}')" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition">Pilih Hari, Jam & Kursi</button></div>`).join('');
+            document.getElementById('shuttle-grid').innerHTML = travelData.map(t => `<div class="glass p-6 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 hover:border-indigo-500 transition duration-500 flex flex-col"><h3 class="text-xl md:text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h3><p class="text-2xl md:text-3xl font-black text-white mb-6">Rp ${t.harga.toLocaleString('id-ID')} <span class="text-xs text-slate-500 font-normal">/ Kursi</span></p><div class="flex gap-2 mb-8 flex-wrap">${t.waktu.map(w => `<span class="bg-white/5 px-3 py-1 rounded-lg text-[10px] md:text-xs font-bold text-slate-300 border border-white/10 whitespace-nowrap">${w} WIB</span>`).join('')}</div><div class="mt-auto"><button onclick="bukaModalPilihKursi('shuttle', '${t.id}')" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition">Pesan Kursi</button></div></div>`).join('');
             
-            document.getElementById('car-grid').innerHTML = rentalData.map(c => `<div class="glass p-8 rounded-[3rem] text-center hover:border-indigo-500 transition duration-500"><img src="${c.img}" ${fallback} class="w-full h-44 object-cover rounded-[2rem] mb-6 shadow-2xl"><h4 class="text-xl font-black text-white mb-2 uppercase italic tracking-tighter">${c.name}</h4><p class="text-indigo-400 font-black text-2xl mb-6 italic">Rp ${c.price} <span class="text-[10px] text-slate-500 font-normal block mt-1">/ 12 Jam</span></p><button onclick="openRentalModal('${c.id}')" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi & Sewa</button></div>`).join('');
+            document.getElementById('car-grid').innerHTML = rentalData.map(c => `<div class="glass p-6 rounded-[2.5rem] md:rounded-[3rem] text-center hover:border-indigo-500 transition duration-500 flex flex-col"><div class="w-full h-40 relative rounded-[2rem] mb-6 overflow-hidden bg-[#0F172A]"><img src="${c.img}" ${fallbackImg} class="w-full h-full object-cover"><div class="hidden absolute inset-0 flex items-center justify-center bg-[#0F172A] text-slate-500 text-xs font-bold uppercase tracking-widest border border-white/5 rounded-[2rem]"><i class="fas fa-car mr-2"></i> Armada Tersedia</div></div><h4 class="text-lg md:text-xl font-black text-white mb-2 uppercase italic tracking-tighter">${c.name}</h4><p class="text-indigo-400 font-black text-xl md:text-2xl mb-6 italic">Rp ${c.price} <span class="text-[10px] text-slate-500 font-normal block mt-1">/ 12 Jam</span></p><div class="mt-auto"><button onclick="openRentalModal('${c.id}')" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Detail & Sewa</button></div></div>`).join('');
             
             document.getElementById('tour-grid').innerHTML = tourData.map(t => {
                 let hargaTampil = t.harga_base + t.harga_kamar;
-                return `<div class="glass rounded-[4rem] overflow-hidden group border border-white/5 shadow-2xl"><div class="h-80 overflow-hidden relative"><img src="${t.img}" ${fallback} class="w-full h-full object-cover brightness-50 group-hover:scale-110 transition duration-700"><div class="absolute bottom-10 left-10"><span class="bg-indigo-600 text-white px-6 py-2 rounded-2xl font-black text-sm shadow-xl">Normal: Rp ${hargaTampil.toLocaleString('id-ID')} / Pax</span></div></div><div class="p-12 text-center uppercase tracking-tighter italic"><h3 class="text-2xl font-black text-white mb-2">${t.name}</h3><p class="text-[10px] text-green-400 font-bold tracking-widest mb-6">Diskon HPP Kamar (Sharing Room) Tersedia!</p><button onclick="bukaModalPilihKursi('wisata', '${t.id}')" class="w-full bg-white text-slate-900 py-5 rounded-3xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Cek Promo & Pilih Kursi</button></div></div>`;
+                let diskonText = t.harga_kamar > 0 ? `<p class="text-[10px] md:text-[11px] text-green-400 font-bold tracking-widest mb-6 mt-1">Diskon HPP Kamar (Sharing Room) Tersedia!</p>` : `<p class="text-[10px] md:text-[11px] text-slate-500 font-bold tracking-widest mb-6 mt-1">Harga Nett Perjalanan PP</p>`;
+                
+                return `<div class="glass rounded-[2.5rem] md:rounded-[3rem] overflow-hidden group border border-white/5 shadow-2xl flex flex-col relative"><div class="h-48 md:h-64 overflow-hidden relative bg-[#0F172A]"><img src="${t.img}" ${fallbackImg} class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition duration-700"><div class="hidden absolute inset-0 flex items-center justify-center bg-[#0F172A] text-slate-500 text-sm font-bold uppercase tracking-widest"><i class="fas fa-map-marked-alt mr-2"></i> Destinasi Tersedia</div><div class="absolute top-4 left-4 z-10"><span class="bg-indigo-600/90 backdrop-blur text-white px-4 py-2 rounded-full font-black text-[11px] md:text-xs shadow-xl border border-white/10 whitespace-nowrap"><i class="fas fa-tag mr-1"></i> Rp ${hargaTampil.toLocaleString('id-ID')} / Pax</span></div></div><div class="p-6 md:p-8 text-center uppercase tracking-tighter italic flex-1 flex flex-col justify-between"><div><h3 class="text-xl md:text-2xl font-black text-white mb-0">${t.name}</h3>${diskonText}</div><button onclick="bukaModalPilihKursi('wisata', '${t.id}')" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition mt-4">Detail & Pilih Kursi</button></div></div>`;
             }).join('');
         }
 
-        // GENERATE KURSI HIACE (DENGAN TITIK KOORDINAT LOGIS)
+        // GENERATE KURSI HIACE
         function generateSeatHTML(bookedArray) {
             let seatHTML = '';
             for(let i=1; i<=14; i++) {
@@ -189,11 +204,10 @@
             return seatHTML;
         }
 
-        // FUNGSI RENDER MANIFEST DINAMIS (PENUMPANG MUNCUL SESUAI KURSI YANG DIKLIK)
+        // FUNGSI RENDER MANIFEST DINAMIS (PENUMPANG MUNCUL SESUAI KURSI)
         function renderDynamicForms() {
             const container = document.getElementById('dynamic-forms');
             
-            // Simpan data yang sudah diketik agar tidak hilang saat di-render ulang
             let savedData = {};
             kursiTerpilih.forEach(k => {
                 let elN = document.getElementById('nama-'+k);
@@ -203,19 +217,19 @@
             });
 
             if(kursiTerpilih.length === 0) {
-                container.innerHTML = `<div class="text-center p-6 bg-white/5 border border-white/10 rounded-2xl text-slate-400 text-sm font-bold shadow-inner">Pilih kursi di denah sebelah kanan untuk mengisi Data Penumpang.</div>`;
+                container.innerHTML = `<div class="text-center p-6 bg-white/5 border border-white/10 rounded-2xl text-slate-400 text-xs md:text-sm font-bold shadow-inner">Silakan klik kursi di denah untuk memunculkan Form Data Penumpang.</div>`;
                 return;
             }
 
-            let formHTML = '<h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">3. Data Penumpang (Sesuai Kursi):</h4>';
+            let formHTML = '<h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">3. Data Penumpang (Wajib Isi):</h4>';
             kursiTerpilih.sort((a,b)=>a-b).forEach(k => {
                 let d = savedData[k] || {n:'', t:'', a:''};
                 formHTML += `
-                <div class="mb-5 p-6 bg-white/5 rounded-[2rem] border border-white/10 shadow-inner">
-                    <p class="text-xs font-black text-indigo-400 mb-4 uppercase tracking-widest border-b border-white/10 pb-3"><i class="fas fa-user-check mr-2"></i> Penumpang Kursi ${k}</p>
-                    <input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap Penumpang" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 mb-3">
-                    <input type="tel" id="telp-${k}" value="${d.t}" placeholder="No. WA Aktif Penumpang" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 mb-3">
-                    <textarea id="alamat-${k}" placeholder="Titik Jemput Lengkap (Mis: Stasiun Madiun / Rumah)" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 h-16 custom-scroll">${d.a}</textarea>
+                <div class="mb-5 p-5 bg-white/5 rounded-2xl md:rounded-[2rem] border border-white/10 shadow-inner">
+                    <p class="text-[10px] md:text-xs font-black text-indigo-400 mb-4 uppercase tracking-widest border-b border-white/10 pb-3"><i class="fas fa-user-check mr-2"></i> Penumpang Kursi ${k}</p>
+                    <input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 mb-3">
+                    <input type="tel" id="telp-${k}" value="${d.t}" placeholder="No. WA Aktif" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 mb-3">
+                    <textarea id="alamat-${k}" placeholder="Titik Jemput Lengkap (Mis: Stasiun Madiun)" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 h-16 custom-scroll">${d.a}</textarea>
                 </div>`;
             });
             container.innerHTML = formHTML;
@@ -239,68 +253,68 @@
             if(type === 'shuttle') {
                 dataAktif = travelData.find(x => x.id === id);
                 infoHTML = `
-                    <h2 class="text-3xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${dataAktif.rute}</h2>
-                    <p class="text-slate-400 mb-8 font-bold">Tarif: Rp ${dataAktif.harga.toLocaleString('id-ID')} / Kursi</p>
-                    <div class="space-y-5 mb-8 border-t border-white/10 pt-6">
+                    <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${dataAktif.rute}</h2>
+                    <p class="text-slate-400 mb-6 font-bold text-sm md:text-base">Tarif: Rp ${dataAktif.harga.toLocaleString('id-ID')} / Kursi</p>
+                    <div class="space-y-4 mb-6 border-t border-b border-white/10 py-6">
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Hari:</label>
-                            <select id="pilihan-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-white font-bold outline-none focus:border-indigo-500">${opsiHari}</select>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Hari:</label>
+                            <select id="pilihan-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white font-bold outline-none focus:border-indigo-500">${opsiHari}</select>
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">2. Jam Keberangkatan:</label>
+                        <div class="pt-2">
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">2. Jam Keberangkatan:</label>
                             <div class="flex flex-wrap gap-2">
-                                ${dataAktif.waktu.map((w, index) => `<button id="jam-${index}" onclick="pilihJam('jam-${index}', '${w}')" class="jam-btn bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-bold text-slate-300 hover:border-indigo-500 transition">${w}</button>`).join('')}
+                                ${dataAktif.waktu.map((w, index) => `<button id="jam-${index}" onclick="pilihJam('jam-${index}', '${w}')" class="jam-btn bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-300 hover:border-indigo-500 transition whitespace-nowrap">${w}</button>`).join('')}
                             </div>
                         </div>
                     </div>
-                    <div id="dynamic-forms" class="border-t border-white/10 pt-6 max-h-[400px] overflow-y-auto custom-scroll pr-2"></div>
+                    <div id="dynamic-forms" class="pt-2 max-h-[350px] overflow-y-auto custom-scroll pr-2"></div>
                 `;
             } else if(type === 'wisata') {
                 dataAktif = tourData.find(x => x.id === id);
+                let infoHotel = dataAktif.harga_kamar > 0 ? `<span class="font-bold text-indigo-400 block">🏨 Biaya Hotel: Rp ${dataAktif.harga_kamar.toLocaleString('id-ID')} / Kamar (Untuk 2 Org)</span>` : `<span class="font-bold text-slate-400 block">🏨 Hotel: ${dataAktif.hotel}</span>`;
                 infoHTML = `
-                    <h2 class="text-4xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter">${dataAktif.name}</h2>
+                    <h2 class="text-2xl md:text-4xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter">${dataAktif.name}</h2>
                     <div class="space-y-3 mb-6">
-                        <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-sm"><span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-1">Rincian HPP Per-Pax:</span><span class="font-bold text-white block mb-1">🚗 Biaya Trip/Jalan: Rp ${dataAktif.harga_base.toLocaleString('id-ID')}</span><span class="font-bold text-indigo-400">🏨 Biaya Hotel: Rp ${dataAktif.harga_kamar.toLocaleString('id-ID')} / Kamar (Untuk 2 Org)</span></div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-xs md:text-sm"><span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-2">Rincian HPP Per-Pax:</span><span class="font-bold text-white block mb-1">🚗 Biaya Trip/Jalan: Rp ${dataAktif.harga_base.toLocaleString('id-ID')}</span>${infoHotel}</div>
                     </div>
                     <div class="mb-6">
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Keberangkatan:</label>
-                        <select id="pilihan-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-white font-bold outline-none focus:border-indigo-500">${opsiHariWisata}</select>
+                        <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">1. Pilih Keberangkatan:</label>
+                        <select id="pilihan-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white font-bold outline-none focus:border-indigo-500">${opsiHariWisata}</select>
                     </div>
-                    <div id="dynamic-forms" class="border-t border-white/10 pt-6 max-h-[350px] overflow-y-auto custom-scroll pr-2 mb-6"></div>
+                    <div id="dynamic-forms" class="border-t border-white/10 pt-6 max-h-[300px] overflow-y-auto custom-scroll pr-2 mb-6"></div>
                     <div class="border-t border-white/10 pt-4">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Rundown Singkat:</h4>
-                        <div class="max-h-[150px] overflow-y-auto custom-scroll pr-4">
-                            ${dataAktif.jadwal.map(h => `<div class="mb-4"><h5 class="text-indigo-400 font-bold text-xs mb-2"><i class="fas fa-flag mr-2"></i>${h.hari}</h5><div class="pl-4 border-l border-white/10 space-y-2">${h.acara.map(a => `<div class="text-[11px] text-slate-300 flex"><span class="font-bold text-white w-12 shrink-0">${a.jam}</span> <span>${a.giat}</span></div>`).join('')}</div></div>`).join('')}
+                        <h4 class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Rundown Perjalanan:</h4>
+                        <div class="max-h-[150px] overflow-y-auto custom-scroll pr-2">
+                            ${dataAktif.jadwal.map(h => `<div class="mb-4"><h5 class="text-indigo-400 font-bold text-[11px] md:text-xs mb-2"><i class="fas fa-flag mr-2"></i>${h.hari}</h5><div class="pl-3 md:pl-4 border-l border-white/10 space-y-2">${h.acara.map(a => `<div class="text-[10px] md:text-[11px] text-slate-300 flex"><span class="font-bold text-white w-10 md:w-12 shrink-0">${a.jam}</span> <span>${a.giat}</span></div>`).join('')}</div></div>`).join('')}
                         </div>
                     </div>
                 `;
             }
 
             document.getElementById('modal-content').innerHTML = `
-                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                     <div>${infoHTML}</div>
-                    <div class="bg-white/5 p-8 rounded-[3rem] border border-white/10 shadow-inner mt-4 lg:mt-0 relative sticky top-0">
-                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Pilih Denah Kursi Hiace:</h3>
-                        <div class="flex justify-center gap-4 mb-6 text-[10px] uppercase font-bold text-slate-500">
+                    <div class="bg-white/5 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-inner lg:sticky lg:top-0 order-first lg:order-last mb-6 lg:mb-0">
+                        <h3 class="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Pilih Denah Kursi Hiace:</h3>
+                        <div class="flex justify-center gap-3 md:gap-4 mb-6 text-[9px] md:text-[10px] uppercase font-bold text-slate-500">
                             <span class="flex items-center gap-1"><div class="w-3 h-3 border border-white/20 rounded-sm"></div> Kosong</span>
                             <span class="flex items-center gap-1"><div class="w-3 h-3 bg-indigo-600 rounded-sm"></div> Dipilih</span>
                             <span class="flex items-center gap-1"><div class="w-3 h-3 bg-slate-800 rounded-sm"></div> Laku</span>
                         </div>
-                        <div class="max-w-[280px] mx-auto">${generateSeatHTML(dataAktif.bookedSeats)}</div>
+                        <div class="max-w-[240px] md:max-w-[280px] mx-auto">${generateSeatHTML(dataAktif.bookedSeats)}</div>
                         
-                        <div class="mt-8 pt-6 border-t border-white/10 space-y-3 text-sm font-bold">
+                        <div class="mt-8 pt-6 border-t border-white/10 space-y-2 md:space-y-3 text-xs md:text-sm font-bold">
                             <div class="flex justify-between text-slate-400"><span>Nomor Kursi:</span><span id="seat-display" class="text-white">-</span></div>
-                            <div id="promo-badge" class="hidden text-[10px] uppercase tracking-widest text-green-400 text-right italic mb-1"></div>
-                            <div class="flex justify-between text-indigo-400 text-2xl font-black"><span>Total Bayar:</span><span id="price-display">Rp 0</span></div>
+                            <div id="promo-badge" class="hidden text-[9px] md:text-[10px] uppercase tracking-widest text-green-400 text-right italic mb-1"></div>
+                            <div class="flex justify-between text-indigo-400 text-lg md:text-2xl font-black pt-2"><span>Total Tagihan:</span><span id="price-display" class="whitespace-nowrap">Rp 0</span></div>
                         </div>
-                        <button onclick="prosesBookingWA()" class="mt-6 w-full bg-green-600 text-white py-5 rounded-2xl font-black text-sm uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2 text-lg"></i> Checkout via WA</button>
+                        <button onclick="prosesBookingWA()" class="mt-6 w-full bg-green-600 text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-xs md:text-sm uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2 text-lg"></i> Checkout ke WA</button>
                     </div>
                 </div>
             `;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
             
-            // Render awal agar tulisan "Silakan pilih kursi" muncul
             renderDynamicForms();
         }
 
@@ -317,13 +331,9 @@
                 el.classList.add('selected'); 
             }
             
-            // 1. Update Tulisan Nomor Kursi
             document.getElementById('seat-display').innerText = kursiTerpilih.length > 0 ? kursiTerpilih.sort((a,b)=>a-b).join(', ') : '-';
-            
-            // 2. Tampilkan/Sembunyikan Form Manifest Dinamis
             renderDynamicForms();
 
-            // 3. Kalkulasi Harga
             let totalHarga = 0;
             let promoBadge = document.getElementById('promo-badge');
 
@@ -339,7 +349,7 @@
                     let infoPromo = `(${jmlOrang} Pax + ${jmlKamar} Kamar) `;
                     if (jmlOrang % 2 === 0) infoPromo += "✨ Sharing Kamar Aktif";
                     else if (jmlOrang > 1) infoPromo += "⚠️ 1 Orang Single Bed";
-                    else infoPromo += "Bayar Kamar Full (Single)";
+                    else infoPromo += "Bayar Kamar Full";
                     
                     promoBadge.innerText = infoPromo;
                     promoBadge.classList.remove('hidden');
@@ -349,16 +359,14 @@
             document.getElementById('price-display').innerText = 'Rp ' + totalHarga.toLocaleString('id-ID');
         }
 
-        // PROSES DATA KE WHATSAPP (SANGAT DETAIL)
         function prosesBookingWA() {
             const hariElem = document.getElementById('pilihan-hari');
             const hari = hariElem ? hariElem.value : "";
             
             if(hari === "") return alert("Mohon pilih Hari Keberangkatan terlebih dahulu!");
             if(tipeLayanan === 'shuttle' && jamAktif === "") return alert("Mohon pilih Jam Keberangkatan terlebih dahulu!");
-            if(kursiTerpilih.length === 0) return alert("Pilih minimal 1 kursi di denah sebelah kanan terlebih dahulu!");
+            if(kursiTerpilih.length === 0) return alert("Pilih minimal 1 kursi di denah terlebih dahulu!");
             
-            // Validasi Form Manifest
             let manifestData = "";
             for(let k of kursiTerpilih.sort((a,b)=>a-b)) {
                 let n = document.getElementById('nama-'+k).value;
@@ -383,22 +391,24 @@
             window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // BUKA MODAL RENTAL MOBIL (TETAP 1 FORM KARENA INI SEWA MOBIL)
         function openRentalModal(id) {
             const c = rentalData.find(x => x.id === id);
             document.getElementById('modal-content').innerHTML = `
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="${c.img}" ${fallback} class="w-full h-96 object-cover rounded-[3rem] shadow-2xl border border-white/5">
-                    <div>
-                        <h2 class="text-4xl font-black text-indigo-400 mb-6 uppercase italic">${c.name}</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="w-full h-64 md:h-96 relative rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-[#0F172A] shadow-2xl border border-white/5 order-first">
+                        <img src="${c.img}" ${fallbackImg} class="w-full h-full object-cover">
+                        <div class="hidden absolute inset-0 flex items-center justify-center bg-[#0F172A] text-slate-500 text-sm font-bold uppercase tracking-widest"><i class="fas fa-car mr-2"></i> Armada Tersedia</div>
+                    </div>
+                    <div class="order-last">
+                        <h2 class="text-3xl md:text-4xl font-black text-indigo-400 mb-6 uppercase italic">${c.name}</h2>
                         
-                        <div class="grid grid-cols-2 gap-4 mb-6 text-sm font-bold bg-white/5 p-6 rounded-[2rem]">
-                            <div><p class="text-[10px] text-slate-500 uppercase">Transmisi</p><p class="text-white">${c.specs.trans}</p></div>
-                            <div><p class="text-[10px] text-slate-500 uppercase">Mesin (CC)</p><p class="text-white">${c.specs.mesin}</p></div>
+                        <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6 text-xs md:text-sm font-bold bg-white/5 p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem]">
+                            <div><p class="text-[9px] md:text-[10px] text-slate-500 uppercase">Transmisi</p><p class="text-white">${c.specs.trans}</p></div>
+                            <div><p class="text-[9px] md:text-[10px] text-slate-500 uppercase">Mesin (CC)</p><p class="text-white">${c.specs.mesin}</p></div>
                         </div>
 
                         <div class="space-y-3 mb-6 border-t border-white/10 pt-6">
-                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Lengkapi Data Sewa:</label>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Lengkapi Data Sewa:</label>
                             <input type="text" id="rent-nama" placeholder="Nama Penyewa Lengkap" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500">
                             <input type="tel" id="rent-telp" placeholder="Nomor WA Aktif" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500">
                             <div class="grid grid-cols-2 gap-3">
@@ -408,7 +418,7 @@
                             <textarea id="rent-alamat" placeholder="Alamat Pengantaran Unit / Jemput" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-sm text-white outline-none focus:border-indigo-500 h-16 custom-scroll"></textarea>
                         </div>
 
-                        <button onclick="prosesRentalWA('${c.name}')" class="block w-full bg-green-600 text-white text-center py-5 rounded-2xl font-black text-lg uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2"></i> Lanjut Booking</button>
+                        <button onclick="prosesRentalWA('${c.name}')" class="block w-full bg-green-600 text-white text-center py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-lg uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2"></i> Lanjut Booking</button>
                     </div>
                 </div>`;
             document.getElementById('modal').classList.remove('hidden');
