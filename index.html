@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurora Travel & Rental Madiun | Solusi Transportasi Premium</title>
+    <title>Aurora Travel & Rental Madiun | Transportasi Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -14,11 +14,15 @@
         .font-utama { font-weight: 800; text-transform: uppercase; font-style: italic; }
         .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* CSS Untuk Kursi Travel */
+        /* CSS Kursi Hiace Premio */
         .seat { transition: all 0.3s ease; }
         .seat:hover:not(.booked) { border-color: #6366f1; transform: scale(1.05); }
         .seat.selected { background-color: #4f46e5; color: white; border-color: #4f46e5; }
         .seat.booked { background-color: #1e293b; color: #475569; cursor: not-allowed; border-color: #1e293b; }
+        
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
     </style>
 </head>
 <body class="antialiased">
@@ -30,13 +34,14 @@
                 <span class="tracking-tighter uppercase italic">AURORA</span>
             </div>
             <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-white/70">
-                <a href="#shuttle" class="hover:text-indigo-400 transition text-indigo-400">Travel/Shuttle</a>
+                <a href="#shuttle" class="hover:text-indigo-400 transition">Travel/Shuttle</a>
                 <a href="#rental" class="hover:text-indigo-400 transition">Sewa Mobil</a>
                 <a href="#wisata" class="hover:text-indigo-400 transition">Paket Wisata</a>
                 <a href="https://wa.me/6282143463566" class="bg-indigo-600 text-white px-8 py-3 rounded-2xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/20">Chat Admin</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
+        
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0F172A] p-8 flex flex-col space-y-6 font-bold border-t border-white/5 shadow-2xl">
             <a href="#shuttle" onclick="toggleMenu()">Travel Antar Kota</a>
             <a href="#rental" onclick="toggleMenu()">Sewa Mobil</a>
@@ -48,12 +53,12 @@
     <section class="min-h-[90vh] flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 to-[#020617] z-0"></div>
         <div class="relative z-10 max-w-5xl">
-            <p class="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">Madiun Premium Travel & Rental Solution</p>
-            <h1 class="text-5xl md:text-8xl font-utama mb-8 leading-[0.9] tracking-tighter">Pilih Kursimu, <br> <span class="gradient-text">Nikmati Perjalanan.</span></h1>
-            <p class="text-slate-400 text-lg md:text-xl mb-12 font-light max-w-3xl mx-auto leading-relaxed">Kini Anda bisa memesan tiket travel rute antar kota langsung dari layar HP Anda. Dilengkapi armada terbaru dan jadwal wisata terlengkap di kelasnya.</p>
+            <p class="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">Madiun Premium Travel & Rental</p>
+            <h1 class="text-5xl md:text-8xl font-utama mb-8 leading-[0.9] tracking-tighter">Pilih Kursimu, <br> <span class="gradient-text">Mulai Perjalanan.</span></h1>
+            <p class="text-slate-400 text-lg md:text-xl mb-12 font-light max-w-3xl mx-auto leading-relaxed">Pesan tiket travel antar kota dan paket wisata langsung dari layar Anda. Pilih kursi favorit Anda sekarang untuk perjalanan yang tak terlupakan dengan armada eksklusif kami.</p>
             <div class="flex flex-wrap justify-center gap-6">
                 <a href="#shuttle" class="bg-white text-slate-900 px-12 py-5 rounded-[2.5rem] font-bold hover:scale-105 transition shadow-2xl uppercase italic tracking-tighter">Pesan Travel</a>
-                <a href="#rental" class="border border-white/20 text-white px-12 py-5 rounded-[2.5rem] font-bold hover:bg-white/10 transition uppercase italic tracking-tighter">Sewa Unit</a>
+                <a href="#wisata" class="border border-white/20 text-white px-12 py-5 rounded-[2.5rem] font-bold hover:bg-white/10 transition uppercase italic tracking-tighter">Open Trip Wisata</a>
             </div>
         </div>
     </section>
@@ -61,15 +66,15 @@
     <section id="shuttle" class="py-32 container mx-auto px-6">
         <div class="text-center mb-20 border-b border-white/5 pb-10">
             <h2 class="text-4xl md:text-5xl font-utama mb-4">Shuttle <span class="text-indigo-500">Antar Kota</span></h2>
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg">Pilih rute, tentukan jadwal, dan pilih kursi favorit Anda. Menggunakan armada Hiace Premio Executive.</p>
+            <p class="text-slate-500 max-w-2xl mx-auto text-lg">Menggunakan armada Hiace Premio Executive (14 Seat). Silakan pilih rute, cek jadwal, dan amankan kursi Anda.</p>
         </div>
         <div id="shuttle-grid" class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
     </section>
 
     <section id="rental" class="py-32 container mx-auto px-6">
         <div class="mb-20 text-center md:text-left border-l-4 border-indigo-600 pl-8">
-            <h2 class="text-4xl md:text-5xl font-utama mb-4">Sewa Kendaraan</h2>
-            <p class="text-slate-500 max-w-xl text-lg">Unit muda keluaran 2023-2024. Melayani dengan sopir maupun lepas kunci.</p>
+            <h2 class="text-4xl md:text-5xl font-utama mb-4">Sewa Armada</h2>
+            <p class="text-slate-500 max-w-xl text-lg">Unit muda keluaran 2023-2024. Melayani penyewaan dengan sopir profesional maupun lepas kunci (syarat berlaku).</p>
         </div>
         <div id="car-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-10"></div>
     </section>
@@ -77,8 +82,8 @@
     <section id="wisata" class="py-32 bg-[#0F172A]/50 rounded-[5rem] mx-4 px-6 border border-white/5 shadow-2xl">
         <div class="container mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-6xl font-utama mb-6 tracking-tighter italic">Jadwal <span class="text-indigo-500">Wisata</span></h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">Susunan acara jam-per-jam yang realistis. Tidak ada jadwal yang terburu-buru.</p>
+                <h2 class="text-4xl md:text-6xl font-utama mb-6 tracking-tighter italic">Open Trip <span class="text-indigo-500">Wisata</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">Berangkat dari Madiun menggunakan Hiace Premio. Jadwal pasti, anti buru-buru, dan Anda bisa pilih kursi sendiri.</p>
             </div>
             <div id="tour-grid" class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto"></div>
         </div>
@@ -86,8 +91,8 @@
 
     <div id="modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/98 backdrop-blur-xl" onclick="closeModal()"></div>
-        <div class="relative bg-[#020617] border border-white/10 w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-[3.5rem] p-6 md:p-14 shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-4xl transition"><i class="fas fa-times"></i></button>
+        <div class="relative bg-[#020617] border border-white/10 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-[3.5rem] p-6 md:p-14 shadow-2xl custom-scroll">
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-4xl transition z-50"><i class="fas fa-times"></i></button>
             <div id="modal-content"></div>
         </div>
     </div>
@@ -98,147 +103,152 @@
 
     <script>
         const waNumber = "6282143463566";
-        let kursiTerpilih = []; // Variabel penyimpan kursi
+        let kursiTerpilih = []; 
+        let hargaAktif = 0;
+        let judulAktif = "";
 
-        /* --- DATA SHUTTLE / TRAVEL --- */
+        /* ====================================================
+           DATABASE (EDIT KONDISI KURSI DI SINI)
+           ==================================================== */
+
+        // 1. DATA TRAVEL ANTAR KOTA
         const travelData = [
             {
-                id: 'madiun-juanda', rute: 'Madiun - Bandara Juanda PP', harga: '185.000',
+                id: 'madiun-juanda', rute: 'Madiun - Bandara Juanda PP', harga: 185000,
                 waktu: ['03:00 WIB', '09:00 WIB', '15:00 WIB', '21:00 WIB'],
-                fasilitas: ['Reclining Seat', 'AC Individual', 'Bebas Bagasi 15kg', 'Via Full Tol'],
-                bookedSeats: [3, 7, 12] // Contoh kursi yang sudah dipesan orang lain
+                bookedSeats: [3, 7] // Kursi yang sudah dibeli
             },
             {
-                id: 'madiun-jogja', rute: 'Madiun - Yogyakarta (YIA) PP', harga: '165.000',
+                id: 'madiun-jogja', rute: 'Madiun - Yogyakarta (YIA) PP', harga: 165000,
                 waktu: ['05:00 WIB', '13:00 WIB', '20:00 WIB'],
-                fasilitas: ['Reclining Seat', 'Snack Box', 'Free Air Mineral', 'Kabin Ekstra Luas'],
-                bookedSeats: [1, 2, 8, 9] // Contoh kursi yang sudah dipesan orang lain
+                bookedSeats: [1, 2, 8] // Kursi yang sudah dibeli
             }
         ];
 
-        /* --- DATA RENTAL --- */
-        const rentalData = [
-            { 
-                id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', 
-                img: 'https://images.unsplash.com/photo-1621285853634-713b1464c1b4?q=80&w=800&auto=format&fit=crop',
-                specs: { trans: 'Manual & Matic', mesin: '2.000cc Hybrid/Bensin', bbm: 'Pertamax', tahun: '2023 - 2024' }, f: ['Captain Seat', 'Panoramic Roof']
-            },
-            { 
-                id: 'avanza', name: 'Toyota New Avanza', price: '450.000', 
-                img: 'https://images.unsplash.com/photo-1632244214258-0051a8d05307?q=80&w=800&auto=format&fit=crop',
-                specs: { trans: 'Manual & Matic', mesin: '1.500cc Dual VVT-i', bbm: 'Pertalite', tahun: '2022 - 2024' }, f: ['Irit BBM', 'Bagasi Fleksibel']
-            },
-            { 
-                id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', 
-                img: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?q=80&w=800&auto=format&fit=crop',
-                specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Diesel', bbm: 'Dexlite', tahun: '2023' }, f: ['14 Penumpang', 'Audio Karaoke VIP']
-            },
-            { 
-                id: 'alphard', name: 'Toyota Alphard Executive', price: '2.800.000', 
-                img: 'https://images.unsplash.com/photo-1512462211516-e8206497f903?q=80&w=800&auto=format&fit=crop',
-                specs: { trans: 'Automatic', mesin: '2.500cc VVT-i', bbm: 'Pertamax Turbo', tahun: '2023' }, f: ['Pilot Seat', 'Double Sunroof']
-            }
-        ];
-
-        /* --- DATA WISATA --- */
+        // 2. DATA WISATA / OPEN TRIP (LOGIKA WAKTU SUDAH LOGIS)
         const tourData = [
             { 
-                id: 'pacitan', name: 'Pacitan Exotic', price: '850.000', 
-                img: 'https://images.unsplash.com/photo-1544919105-0e31e9c20a46?q=80&w=1200', ket: 'Sehari Selesai',
-                jadwal: [ { hari: 'Rundown Perjalanan', acara: [ { jam: '05:00', giat: 'Jemput Madiun' }, { jam: '08:30', giat: 'Goa Gong' }, { jam: '10:30', giat: 'Perjalanan ke Klayar' }, { jam: '11:00', giat: 'Pantai Klayar & Lunch' }, { jam: '13:30', giat: 'Perjalanan ke Kasap' }, { jam: '14:30', giat: 'Pantai Kasap' }, { jam: '15:30', giat: 'Perjalanan ke Soge' }, { jam: '16:30', giat: 'Pantai Soge' }, { jam: '21:00', giat: 'Tiba di Madiun' } ] } ]
+                id: 'pacitan', name: 'Open Trip Pacitan', price: 850000, 
+                img: 'https://images.unsplash.com/photo-1544919105-0e31e9c20a46?auto=format&fit=crop&w=800&q=80', ket: 'Sehari Selesai (PP)',
+                bookedSeats: [2, 5, 6],
+                jadwal: [ 
+                    { 
+                        hari: 'Rundown Perjalanan', 
+                        acara: [ 
+                            { jam: '05:00', giat: 'Penjemputan Area Madiun' }, 
+                            { jam: '08:30', giat: 'Tiba & Eksplorasi Goa Gong' }, 
+                            { jam: '10:30', giat: 'Berangkat ke Pantai Klayar' }, 
+                            { jam: '11:00', giat: 'Tiba di Pantai Klayar & Makan Siang' }, 
+                            { jam: '13:30', giat: 'Berangkat ke Pantai Kasap' }, 
+                            { jam: '14:30', giat: 'Tiba & Eksplorasi Pantai Kasap' }, 
+                            { jam: '15:30', giat: 'Berangkat ke Pantai Soge' }, 
+                            { jam: '16:30', giat: 'Tiba di Pantai Soge (Jembatan Viral)' }, 
+                            { jam: '18:00', giat: 'Perjalanan Pulang ke Madiun' },
+                            { jam: '21:00', giat: 'Tiba di Madiun. Trip Selesai.' } 
+                        ] 
+                    } 
+                ]
             },
             { 
-                id: 'bali', name: 'Bali All-In (3H2M)', price: '2.450.000', 
-                img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200', ket: 'Hotel Bintang 4',
-                jadwal: [ { hari: 'Hari 1', acara: [ { jam: '10:00', giat: 'Jemput Bandara' }, { jam: '14:00', giat: 'Pantai Melasti' }, { jam: '17:00', giat: 'Uluwatu Sunset' }, { jam: '19:30', giat: 'Dinner Jimbaran' } ] }, { hari: 'Hari 2', acara: [ { jam: '10:00', giat: 'Desa Penglipuran' }, { jam: '12:30', giat: 'Kintamani' }, { jam: '15:00', giat: 'Tirta Empul' } ] }, { hari: 'Hari 3', acara: [ { jam: '10:00', giat: 'Tanah Lot' }, { jam: '12:00', giat: 'Belanja Krisna' }, { jam: '15:00', giat: 'Drop Bandara' } ] } ]
+                id: 'bali', name: 'Overland Bali (Start Madiun)', price: 2450000, 
+                img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80', ket: '3 Hari 2 Malam',
+                bookedSeats: [1, 2, 3, 4],
+                jadwal: [ 
+                    { hari: 'Hari 1: Perjalanan Darat', acara: [ { jam: '15:00', giat: 'Kumpul & Penjemputan Madiun' }, { jam: '16:00', giat: 'Perjalanan via Tol Trans Jawa' }, { jam: '23:00', giat: 'Tiba di Pelabuhan Ketapang' } ] }, 
+                    { hari: 'Hari 2: Eksplor Bali Selatan', acara: [ { jam: '01:00', giat: 'Penyeberangan Ketapang - Gilimanuk' }, { jam: '07:00', giat: 'Sarapan Area Denpasar' }, { jam: '10:00', giat: 'Pura Tanah Lot' }, { jam: '14:00', giat: 'Check-in Hotel Bintang 4' }, { jam: '16:00', giat: 'Pantai Melasti & Sunset Uluwatu' }, { jam: '19:30', giat: 'Dinner Seafood Jimbaran' } ] }, 
+                    { hari: 'Hari 3: Culture & Kepulangan', acara: [ { jam: '08:00', giat: 'Check-out & Menuju Desa Penglipuran' }, { jam: '12:00', giat: 'Makan Siang View Gunung Batur' }, { jam: '15:00', giat: 'Pura Tirta Empul / Belanja Krisna' }, { jam: '19:00', giat: 'Menyeberang kembali ke Jawa' } ] },
+                    { hari: 'Hari 4: Tiba Madiun', acara: [ { jam: '05:00', giat: 'Estimasi tiba di Madiun.' } ] }
+                ]
             }
         ];
+
+        // 3. DATA RENTAL MOBIL (SPESIFIKASI KEMBALI LENGKAP & DETAIL)
+        const rentalData = [
+            { id: 'zenix', name: 'Toyota Innova Zenix', price: '850.000', img: 'https://images.unsplash.com/photo-1621285853634-713b1464c1b4?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual/Matic', mesin: '2.000cc Hybrid', tahun: '2023-2024', bbm: 'Pertamax' }, fasilitas: ['Captain Seat', 'Panoramic Roof', 'AC Double Blower', 'Fitur TSS Safety'] },
+            { id: 'avanza', name: 'Toyota New Avanza', price: '450.000', img: 'https://images.unsplash.com/photo-1632244214258-0051a8d05307?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual/Matic', mesin: '1.500cc Dual VVT-i', tahun: '2022-2024', bbm: 'Pertalite' }, fasilitas: ['Kabin 7 Penumpang', 'Irit Bahan Bakar', 'Colokan Charger Full', 'Bagasi Fleksibel'] },
+            { id: 'hiace', name: 'Hiace Premio VIP', price: '1.250.000', img: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Manual 6-Speed', mesin: '2.800cc Turbo Diesel', tahun: '2023', bbm: 'Dexlite' }, fasilitas: ['14 Kursi Reclining', 'Audio Karaoke TV', 'AC Per Kepala', 'Kabin Ekstra Luas'] },
+            { id: 'alphard', name: 'Toyota Alphard Executive', price: '2.800.000', img: 'https://images.unsplash.com/photo-1512462211516-e8206497f903?auto=format&fit=crop&w=800&q=80', specs: { trans: 'Automatic (CVT)', mesin: '2.500cc VVT-i', tahun: '2023', bbm: 'Pertamax Turbo' }, fasilitas: ['Pilot Seat Massage', 'Power Slider Door', 'Dual Sunroof', 'Kabin Kedap Suara'] }
+        ];
+
+        /* ====================================================
+           LOGIKA PROGRAM & RENDER
+           ==================================================== */
 
         function renderAll() {
             // Render Shuttle
-            document.getElementById('shuttle-grid').innerHTML = travelData.map(t => `
-                <div class="glass p-10 rounded-[3rem] border border-white/5 hover:border-indigo-500 transition duration-500">
-                    <h3 class="text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h3>
-                    <p class="text-3xl font-black text-white mb-6">Rp ${t.harga} <span class="text-xs text-slate-500 font-normal">/ Kursi</span></p>
-                    <div class="flex gap-2 mb-8 flex-wrap">
-                        ${t.waktu.map(w => `<span class="bg-white/5 px-3 py-1 rounded-lg text-xs font-bold text-slate-300 border border-white/10">${w}</span>`).join('')}
-                    </div>
-                    <button onclick="bukaModalShuttle('${t.id}')" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition">Cek Ketersediaan Kursi</button>
-                </div>
-            `).join('');
-
+            document.getElementById('shuttle-grid').innerHTML = travelData.map(t => `<div class="glass p-10 rounded-[3rem] border border-white/5 hover:border-indigo-500 transition duration-500"><h3 class="text-2xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h3><p class="text-3xl font-black text-white mb-6">Rp ${t.harga.toLocaleString('id-ID')} <span class="text-xs text-slate-500 font-normal">/ Kursi</span></p><div class="flex gap-2 mb-8 flex-wrap">${t.waktu.map(w => `<span class="bg-white/5 px-3 py-1 rounded-lg text-xs font-bold text-slate-300 border border-white/10">${w}</span>`).join('')}</div><button onclick="bukaModalPilihKursi('shuttle', '${t.id}')" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition">Pilih Kursi & Pesan</button></div>`).join('');
+            
             // Render Rental
-            document.getElementById('car-grid').innerHTML = rentalData.map(c => `
-                <div class="glass p-8 rounded-[3rem] text-center hover:border-indigo-500 transition duration-500 group">
-                    <img src="${c.img}" onerror="this.src='https://placehold.co/600x400/1e1b4b/ffffff?text=${c.name.replace(/ /g, '+')}'" class="w-full h-44 object-cover rounded-[2rem] mb-6 shadow-2xl group-hover:scale-105 transition duration-500">
-                    <h4 class="text-xl font-black text-white mb-2 uppercase italic tracking-tighter">${c.name}</h4>
-                    <p class="text-indigo-400 font-black text-2xl mb-6 italic">Rp ${c.price}</p>
-                    <button onclick="openRentalModal('${c.id}')" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi Detail</button>
-                </div>
-            `).join('');
-
-            // Render Tour
-            document.getElementById('tour-grid').innerHTML = tourData.map(t => `
-                <div class="glass rounded-[4rem] overflow-hidden group border border-white/5 shadow-2xl">
-                    <div class="h-80 overflow-hidden relative"><img src="${t.img}" class="w-full h-full object-cover brightness-50 group-hover:scale-110 transition duration-700"><div class="absolute bottom-10 left-10"><span class="bg-indigo-600 text-white px-6 py-2 rounded-2xl font-black text-sm shadow-xl">Rp ${t.price} / Orang</span></div></div>
-                    <div class="p-12 text-center uppercase tracking-tighter italic">
-                        <h3 class="text-2xl font-black text-white mb-6">${t.name}</h3>
-                        <button onclick="openTourModal('${t.id}')" class="w-full bg-white text-slate-900 py-5 rounded-3xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Lihat Jadwal Per-Jam</button>
-                    </div>
-                </div>
-            `).join('');
+            document.getElementById('car-grid').innerHTML = rentalData.map(c => `<div class="glass p-8 rounded-[3rem] text-center hover:border-indigo-500 transition duration-500"><img src="${c.img}" onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=${c.name.replace(/ /g, '+')}'" class="w-full h-44 object-cover rounded-[2rem] mb-6 shadow-2xl"><h4 class="text-xl font-black text-white mb-2 uppercase italic tracking-tighter">${c.name}</h4><p class="text-indigo-400 font-black text-2xl mb-6 italic">Rp ${c.price} <span class="text-[10px] text-slate-500 font-normal block mt-1">/ 12 Jam</span></p><button onclick="openRentalModal('${c.id}')" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi Detail</button></div>`).join('');
+            
+            // Render Wisata
+            document.getElementById('tour-grid').innerHTML = tourData.map(t => `<div class="glass rounded-[4rem] overflow-hidden group border border-white/5 shadow-2xl"><div class="h-80 overflow-hidden relative"><img src="${t.img}" onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=${t.name.replace(/ /g, '+')}'" class="w-full h-full object-cover brightness-50 group-hover:scale-110 transition duration-700"><div class="absolute bottom-10 left-10"><span class="bg-indigo-600 text-white px-6 py-2 rounded-2xl font-black text-sm shadow-xl">Rp ${t.price.toLocaleString('id-ID')} / Pax</span></div></div><div class="p-12 text-center uppercase tracking-tighter italic"><h3 class="text-2xl font-black text-white mb-6">${t.name}</h3><button onclick="bukaModalPilihKursi('wisata', '${t.id}')" class="w-full bg-white text-slate-900 py-5 rounded-3xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Lihat Jadwal & Pilih Kursi</button></div></div>`).join('');
         }
 
-        /* --- FUNGSI PILIH KURSI HIACE PREMIO (14 SEAT) --- */
-        function bukaModalShuttle(id) {
-            kursiTerpilih = []; // Reset pilihan kursi
-            const t = travelData.find(x => x.id === id);
-            
-            // Generate Seat Layout Hiace Premio (Supir Kanan)
+        // GENERATE KURSI HIACE PREMIO (14 SEAT)
+        function generateSeatHTML(bookedArray) {
             let seatHTML = '';
             for(let i=1; i<=14; i++) {
-                const isBooked = t.bookedSeats.includes(i);
-                const seatClass = isBooked ? 'booked bg-slate-800 text-slate-500 border-slate-700' : 'bg-white/5 text-slate-300 border-white/20 hover:border-indigo-400 cursor-pointer';
+                const isBooked = bookedArray.includes(i);
+                const seatClass = isBooked ? 'booked bg-slate-800 text-slate-500 border-slate-700' : 'bg-white/5 text-slate-300 border-white/20 hover:border-indigo-400 cursor-pointer shadow-lg';
                 const action = isBooked ? '' : `onclick="toggleKursi(${i})"`;
-                
-                // Styling per baris (Layout Khas Hiace Premio)
-                if(i===1) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><span class="text-[10px] opacity-50">Kiri</span><b>${i}</b></div><div class="w-14 h-14"></div><div class="w-14 h-14 bg-slate-800/50 rounded-xl flex items-center justify-center border border-slate-700 text-slate-500"><i class="fas fa-steering-wheel"></i></div></div>`; // Baris Supir
-                else if(i===2) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-14 h-14"></div>`; // Baris 2 Kiri
-                else if(i===3 || i===4) { seatHTML += `<div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===4) seatHTML += `</div>`; } // Baris 2 Kanan
-                else if(i===5) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-14 h-14"></div>`; // Baris 3
-                else if(i===6 || i===7) { seatHTML += `<div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===7) seatHTML += `</div>`; }
-                else if(i===8) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-14 h-14"></div>`; // Baris 4
-                else if(i===9 || i===10) { seatHTML += `<div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===10) seatHTML += `</div>`; }
-                else if(i===11) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; // Baris 5 Belakang (4 Kursi Rapat)
-                else { seatHTML += `<div class="seat w-14 h-14 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===14) seatHTML += `</div>`; }
+                if(i===1) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-12 h-12 border rounded-xl flex flex-col items-center justify-center ${seatClass}" id="seat-${i}" ${action}><span class="text-[8px] opacity-50">Kiri</span><b>${i}</b></div><div class="w-12 h-12"></div><div class="w-12 h-12 bg-slate-800/50 rounded-xl flex items-center justify-center border border-slate-700 text-slate-500"><i class="fas fa-steering-wheel"></i></div></div>`; 
+                else if(i===2) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-12 h-12"></div>`; 
+                else if(i===3 || i===4) { seatHTML += `<div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===4) seatHTML += `</div>`; } 
+                else if(i===5) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-12 h-12"></div>`; 
+                else if(i===6 || i===7) { seatHTML += `<div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===7) seatHTML += `</div>`; }
+                else if(i===8) seatHTML += `<div class="flex justify-between mb-4"><div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div><div class="w-12 h-12"></div>`; 
+                else if(i===9 || i===10) { seatHTML += `<div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===10) seatHTML += `</div>`; }
+                else if(i===11) seatHTML += `<div class="flex justify-between mt-6"><div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; 
+                else { seatHTML += `<div class="seat w-12 h-12 border rounded-xl flex items-center justify-center ${seatClass}" id="seat-${i}" ${action}><b>${i}</b></div>`; if(i===14) seatHTML += `</div>`; }
+            }
+            return seatHTML;
+        }
+
+        // BUKA MODAL PILIH KURSI (SHUTTLE & WISATA)
+        function bukaModalPilihKursi(type, id) {
+            kursiTerpilih = []; 
+            let data, infoHTML = '';
+            
+            if(type === 'shuttle') {
+                data = travelData.find(x => x.id === id);
+                hargaAktif = data.harga;
+                judulAktif = data.rute;
+                infoHTML = `
+                    <h2 class="text-3xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${data.rute}</h2>
+                    <p class="text-slate-400 mb-8 font-bold">Tarif: Rp ${hargaAktif.toLocaleString('id-ID')} / Kursi</p>
+                    <div class="flex flex-wrap gap-2 mb-8">${data.waktu.map(w => `<span class="bg-indigo-600/20 text-indigo-400 px-3 py-1 rounded border border-indigo-500/30 text-xs font-bold">${w}</span>`).join('')}</div>
+                `;
+            } else if(type === 'wisata') {
+                data = tourData.find(x => x.id === id);
+                hargaAktif = data.price;
+                judulAktif = data.name;
+                infoHTML = `
+                    <h2 class="text-3xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter">${data.name}</h2>
+                    <div class="pr-4 max-h-[400px] overflow-y-auto custom-scroll border-y border-white/10 py-6">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Rundown Perjalanan:</h4>
+                        ${data.jadwal.map(h => `<div class="mb-5"><h5 class="text-indigo-400 font-bold text-sm mb-3"><i class="fas fa-flag text-xs mr-2"></i> ${h.hari}</h5><div class="pl-4 border-l border-white/10 space-y-3">${h.acara.map(a => `<div class="text-xs text-slate-300 flex"><span class="font-bold text-white w-14 shrink-0">${a.jam}</span> <span>${a.giat}</span></div>`).join('')}</div></div>`).join('')}
+                    </div>
+                `;
             }
 
             document.getElementById('modal-content').innerHTML = `
-                <div class="grid lg:grid-cols-2 gap-16 items-start">
-                    <div>
-                        <h2 class="text-4xl font-black text-indigo-400 mb-2 uppercase italic tracking-tighter">${t.rute}</h2>
-                        <p class="text-slate-400 mb-8 font-bold">Harga: Rp ${t.harga} / Pax</p>
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <div>${infoHTML}</div>
+                    <div class="bg-white/5 p-8 rounded-[3rem] border border-white/10 shadow-inner">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Pilih Denah Kursi Hiace:</h3>
+                        <div class="flex justify-center gap-4 mb-6 text-[10px] uppercase font-bold text-slate-500">
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 border border-white/20 rounded-sm"></div> Kosong</span>
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 bg-indigo-600 rounded-sm"></div> Dipilih</span>
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 bg-slate-800 rounded-sm"></div> Laku</span>
+                        </div>
+                        <div class="max-w-[280px] mx-auto">${generateSeatHTML(data.bookedSeats)}</div>
                         
-                        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Denah Kursi Hiace Premio:</h3>
-                        <div class="bg-white/5 p-8 rounded-[3rem] border border-white/10 max-w-[320px] mx-auto shadow-inner">
-                            <div class="flex justify-center gap-6 mb-8 text-[10px] uppercase font-bold text-slate-400">
-                                <span class="flex items-center gap-2"><div class="w-3 h-3 border border-white/20 rounded-sm"></div> Kosong</span>
-                                <span class="flex items-center gap-2"><div class="w-3 h-3 bg-indigo-600 rounded-sm"></div> Dipilih</span>
-                                <span class="flex items-center gap-2"><div class="w-3 h-3 bg-slate-800 rounded-sm"></div> Penuh</span>
-                            </div>
-                            <div class="w-full">${seatHTML}</div>
+                        <div class="mt-8 pt-6 border-t border-white/10 space-y-3 text-sm font-bold">
+                            <div class="flex justify-between text-slate-400"><span>Nomor Kursi:</span><span id="seat-display" class="text-white">-</span></div>
+                            <div class="flex justify-between text-indigo-400 text-2xl font-black"><span>Total:</span><span id="price-display">Rp 0</span></div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="bg-indigo-600/10 border border-indigo-500/20 p-8 rounded-[2.5rem] mb-10">
-                            <h5 class="text-indigo-400 font-bold text-[10px] uppercase mb-4 tracking-widest italic">Ringkasan Pesanan:</h5>
-                            <div class="space-y-4 text-sm font-bold">
-                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Nomor Kursi:</span><span id="seat-display" class="text-white">-</span></div>
-                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Total Tiket:</span><span id="qty-display" class="text-white">0</span></div>
-                                <div class="flex justify-between"><span>Estimasi Total:</span><span id="price-display" class="text-indigo-400 text-xl font-black">Rp 0</span></div>
-                            </div>
-                        </div>
-                        <button onclick="prosesBookingTravel('${t.rute}')" class="block w-full bg-green-600 text-white text-center py-6 rounded-[2rem] font-black text-xl uppercase italic shadow-2xl hover:bg-green-700 transition">Konfirmasi via WhatsApp</button>
+                        <button onclick="prosesBookingWA()" class="mt-8 w-full bg-green-600 text-white py-5 rounded-2xl font-black text-sm uppercase italic shadow-2xl hover:bg-green-700 transition"><i class="fab fa-whatsapp mr-2 text-lg"></i> Konfirmasi ke WA</button>
                     </div>
                 </div>
             `;
@@ -246,47 +256,54 @@
             document.body.classList.add('modal-active');
         }
 
-        // FUNGSI TOGGLE KURSI KLIK
+        // FUNGSI PILIH KURSI & KALKULASI HARGA
         function toggleKursi(no) {
             const el = document.getElementById('seat-'+no);
             const idx = kursiTerpilih.indexOf(no);
-            if(idx > -1) {
-                kursiTerpilih.splice(idx, 1);
-                el.classList.remove('selected');
-            } else {
-                kursiTerpilih.push(no);
-                el.classList.add('selected');
-            }
-            // Update Ringkasan
+            if(idx > -1) { kursiTerpilih.splice(idx, 1); el.classList.remove('selected'); } 
+            else { kursiTerpilih.push(no); el.classList.add('selected'); }
             document.getElementById('seat-display').innerText = kursiTerpilih.length > 0 ? kursiTerpilih.sort((a,b)=>a-b).join(', ') : '-';
-            document.getElementById('qty-display').innerText = kursiTerpilih.length + ' Orang';
-            // Hitung harga (contoh gampang ambil 165/185rb dari text)
-            let hargaText = document.querySelector('p.text-slate-400.mb-8').innerText.split('Rp ')[1].split(' /')[0];
-            let hargaNum = parseInt(hargaText.replace('.', ''));
-            let total = kursiTerpilih.length * hargaNum;
-            document.getElementById('price-display').innerText = 'Rp ' + total.toLocaleString('id-ID');
+            document.getElementById('price-display').innerText = 'Rp ' + (kursiTerpilih.length * hargaAktif).toLocaleString('id-ID');
         }
 
-        function prosesBookingTravel(rute) {
+        function prosesBookingWA() {
             if(kursiTerpilih.length === 0) return alert("Pilih minimal 1 kursi terlebih dahulu!");
-            let textWA = `Halo Aurora, saya ingin booking Travel rute *${rute}*.\nSaya memilih kursi nomor: *${kursiTerpilih.sort((a,b)=>a-b).join(', ')}*. Mohon info ketersediaan jam dan cara pembayarannya.`;
-            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(textWA)}`, '_blank');
+            let text = `Halo Aurora Travel,\nSaya ingin booking tiket *${judulAktif}*.\nNomor Kursi: *${kursiTerpilih.sort((a,b)=>a-b).join(', ')}*.\n\nMohon informasi ketersediaan jadwal dan pembayaran.`;
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        /* --- FUNGSI RENTAL & WISATA (SAMA SEPERTI SEBELUMNYA) --- */
-        function openRentalModal(id) { const c = rentalData.find(x => x.id === id); /* Logic PopUp Mobil */ document.getElementById('modal-content').innerHTML = `<div class="grid lg:grid-cols-2 gap-12 items-center"><img src="${c.img}" class="w-full h-96 object-cover rounded-[3.5rem] shadow-2xl border border-white/5"><div><h2 class="text-5xl font-black text-indigo-400 mb-6 uppercase italic tracking-tighter leading-none">${c.name}</h2><div class="grid grid-cols-2 gap-4 mb-8 text-sm font-bold"><div class="bg-white/5 p-5 rounded-3xl border border-white/10"><p class="text-[10px] text-slate-500 uppercase mb-1">Transmisi</p><p class="text-white">${c.specs.trans}</p></div><div class="bg-white/5 p-5 rounded-3xl border border-white/10"><p class="text-[10px] text-slate-500 uppercase mb-1">Tahun Unit</p><p class="text-white">${c.specs.tahun}</p></div><div class="bg-white/5 p-5 rounded-3xl border border-white/10"><p class="text-[10px] text-slate-500 uppercase mb-1">Mesin (CC)</p><p class="text-white">${c.specs.mesin}</p></div><div class="bg-white/5 p-5 rounded-3xl border border-white/10"><p class="text-[10px] text-slate-500 uppercase mb-1">BBM</p><p class="text-white">${c.specs.bbm}</p></div></div><a href="https://wa.me/${waNumber}?text=Halo Aurora, saya ingin sewa unit ${c.name}." class="block w-full bg-green-600 text-white text-center py-6 rounded-[2rem] font-black text-xl uppercase italic shadow-2xl">Lanjut Booking</a></div></div>`; document.getElementById('modal').classList.remove('hidden'); document.body.classList.add('modal-active'); }
-        function openTourModal(id) { const t = tourData.find(x => x.id === id); /* Logic PopUp Wisata */ document.getElementById('modal-content').innerHTML = `<div class="space-y-12"><div class="text-center border-b border-white/10 pb-10"><h2 class="text-5xl font-black text-indigo-400 mb-4 uppercase italic tracking-tighter">${t.name}</h2><span class="bg-white/5 text-slate-400 px-6 py-2 rounded-full text-xs font-bold border border-white/10 uppercase italic tracking-widest">${t.ket}</span></div><div class="max-w-4xl mx-auto space-y-16">${t.jadwal.map(h => `<div class="space-y-6"><h4 class="text-white font-bold text-2xl flex items-center gap-4 italic uppercase tracking-tighter"><span class="bg-indigo-600 w-3 h-10 rounded-full"></span> ${h.hari}</h4><div class="bg-white/[0.02] rounded-[3.5rem] overflow-hidden border border-white/5 shadow-2xl"><table class="w-full text-left"><thead class="bg-white/5 text-[10px] uppercase font-bold text-slate-500 tracking-[0.2em]"><tr><th class="p-6 w-28 text-center border-r border-white/5">Waktu</th><th class="p-6">Detail Kegiatan</th></tr></thead><tbody class="text-sm">${h.acara.map(a => `<tr class="border-b border-white/5 hover:bg-white/[0.04] transition"><td class="p-6 font-black text-indigo-400 border-r border-white/5 text-center">${a.jam}</td><td class="p-6 text-slate-300 font-medium">${a.giat}</td></tr>`).join('')}</tbody></table></div></div>`).join('')}</div><a href="https://wa.me/${waNumber}?text=Halo Aurora, saya ingin daftar Paket Wisata ${t.name}." class="block w-full max-w-4xl mx-auto bg-white text-slate-900 text-center py-7 rounded-[3rem] font-black text-2xl uppercase tracking-tighter italic">Daftar Sekarang</a></div>`; document.getElementById('modal').classList.remove('hidden'); document.body.classList.add('modal-active'); }
+        // BUKA MODAL RENTAL MOBIL
+        function openRentalModal(id) {
+            const c = rentalData.find(x => x.id === id);
+            document.getElementById('modal-content').innerHTML = `
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <img src="${c.img}" onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=${c.name.replace(/ /g, '+')}'" class="w-full h-96 object-cover rounded-[3rem] shadow-2xl">
+                    <div>
+                        <h2 class="text-4xl font-black text-indigo-400 mb-6 uppercase italic">${c.name}</h2>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6 text-sm font-bold bg-white/5 p-6 rounded-[2rem]">
+                            <div><p class="text-[10px] text-slate-500 uppercase">Transmisi</p><p class="text-white">${c.specs.trans}</p></div>
+                            <div><p class="text-[10px] text-slate-500 uppercase">Tahun Unit</p><p class="text-white">${c.specs.tahun}</p></div>
+                            <div><p class="text-[10px] text-slate-500 uppercase">Mesin (CC)</p><p class="text-white">${c.specs.mesin}</p></div>
+                            <div><p class="text-[10px] text-slate-500 uppercase">Bahan Bakar</p><p class="text-white">${c.specs.bbm}</p></div>
+                        </div>
+
+                        <h5 class="text-indigo-400 font-bold text-[10px] uppercase mb-4 tracking-widest italic mt-6">Fasilitas Utama:</h5>
+                        <div class="grid grid-cols-2 gap-3 text-[11px] font-bold text-slate-300 mb-10">
+                            ${c.fasilitas.map(f => `<span><i class="fas fa-check text-indigo-500 mr-2"></i>${f}</span>`).join('')}
+                        </div>
+
+                        <a href="https://wa.me/${waNumber}?text=Halo Aurora, saya ingin sewa armada ${c.name}." class="block w-full bg-green-600 text-white text-center py-5 rounded-2xl font-black text-lg uppercase italic shadow-2xl hover:bg-green-700 transition">Booking Sekarang</a>
+                    </div>
+                </div>`;
+            document.getElementById('modal').classList.remove('hidden');
+            document.body.classList.add('modal-active');
+        }
 
         function closeModal() { document.getElementById('modal').classList.add('hidden'); document.body.classList.remove('modal-active'); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
         renderAll();
-
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 80) nav.classList.add('bg-[#020617]/95', 'py-4', 'shadow-2xl');
-            else nav.classList.remove('bg-[#020617]/95', 'py-4', 'shadow-2xl');
-        });
     </script>
 </body>
 </html>
