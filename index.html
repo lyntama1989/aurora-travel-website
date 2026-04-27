@@ -3,355 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurora Travel & Rental Madiun | Solusi Perjalanan Lengkap & Terpercaya</title>
+    <title>Aurora Travel & Rental Madiun | Pilihan Semua Kalangan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f1f5f9; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .modal-active { overflow: hidden; }
-        .font-utama { font-weight: 800; text-transform: uppercase; font-style: italic; }
-        table { width: 100%; border-collapse: collapse; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed w-full z-[100] py-5 px-6 md:px-12 bg-[#020617]/90 backdrop-blur-md border-b border-white/5 shadow-lg">
+    <nav class="fixed w-full z-[100] transition-all duration-500 py-6 px-6 md:px-12 bg-[#020617]/90 backdrop-blur-md border-b border-white/5">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black flex items-center gap-3">
+            <a href="#" class="text-2xl font-black flex items-center gap-3 tracking-tighter">
                 <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg"><i class="fas fa-paper-plane"></i></div>
-                <span class="tracking-tighter uppercase italic">AURORA</span>
+                <span class="text-white">AURORA</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
+                <a href="#home" class="hover:text-indigo-400">Beranda</a>
+                <a href="#rental" class="hover:text-indigo-400">Sewa Mobil</a>
+                <a href="#wisata" class="hover:text-indigo-400">Paket Wisata</a>
+                <a href="https://wa.me/6282143463566" class="bg-indigo-600 text-white px-8 py-3 rounded-2xl hover:bg-indigo-700 transition">Booking</a>
             </div>
-            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-white/70">
-                <a href="#rental" class="hover:text-indigo-400 transition">Sewa Mobil</a>
-                <a href="#wisata" class="hover:text-indigo-400 transition">Paket Wisata</a>
-                <a href="#aturan" class="hover:text-indigo-400 transition">Syarat & Ketentuan</a>
-                <a href="https://wa.me/6282143463566" class="bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/30">Hubungi Kami</a>
-            </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+            
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0F172A] p-8 flex flex-col space-y-6 font-bold border-t border-white/5">
-            <a href="#rental" onclick="toggleMenu()" class="text-white">Sewa Mobil</a>
-            <a href="#wisata" onclick="toggleMenu()" class="text-white">Paket Wisata</a>
-            <a href="#aturan" onclick="toggleMenu()" class="text-white">Syarat & Ketentuan</a>
+            <a href="#home" onclick="toggleMenu()">Beranda</a>
+            <a href="#rental" onclick="toggleMenu()">Sewa Mobil</a>
+            <a href="#wisata" onclick="toggleMenu()">Paket Wisata</a>
             <a href="https://wa.me/6282143463566" class="bg-indigo-600 text-white py-4 rounded-xl text-center">Hubungi Kami</a>
         </div>
     </nav>
 
-    <section class="min-h-[90vh] flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 to-[#020617] z-0"></div>
+    <section id="home" class="min-h-screen flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/10 to-[#020617] z-0"></div>
         <div class="relative z-10 max-w-4xl">
-            <p class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-xs mb-6">Transportasi Premium Madiun & Sekitarnya</p>
-            <h1 class="text-5xl md:text-7xl font-utama mb-8 leading-tight">Layanan Jelas, <br> <span class="text-indigo-500">Kualitas Tegas.</span></h1>
-            <p class="text-slate-400 text-lg md:text-xl mb-12 font-light">Kami menyajikan data secara lengkap dan transparan. Lihat spesifikasi mobil terbaru kami, pelajari jadwal wisata dengan detail, dan nikmati perjalanan tanpa rasa was-was.</p>
+            <p class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-xs mb-6">Transportasi Premium Madiun</p>
+            <h1 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-tight italic uppercase">Luxury <br> <span class="text-indigo-500">Fleet.</span></h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-lightleading-relaxed">Sewa mobil terbaru 2024 atau ikut paket wisata dengan jadwal jam-per-jam yang pasti. Kenyamanan Anda adalah prioritas kami.</p>
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="#rental" class="bg-white text-slate-900 px-10 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-indigo-500 hover:text-white transition shadow-xl">Katalog Mobil</a>
-                <a href="#wisata" class="border border-white/20 text-white px-10 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-white/10 transition">Lihat Wisata</a>
+                <a href="#rental" class="bg-white text-slate-900 px-12 py-5 rounded-[2rem] font-bold hover:bg-indigo-50 transition shadow-2xl">Sewa Mobil</a>
+                <a href="#wisata" class="bg-indigo-600 text-white px-12 py-5 rounded-[2rem] font-bold hover:bg-indigo-700 transition shadow-xl shadow-indigo-600/20">Jadwal Tour</a>
             </div>
         </div>
     </section>
 
-    <section id="rental" class="py-24 container mx-auto px-6">
-        <div class="mb-16 border-b border-white/10 pb-6 text-center md:text-left">
-            <h2 class="text-4xl font-utama mb-3">Sewa Mobil & Spesifikasi</h2>
-            <p class="text-slate-400">Pilih unit yang sesuai dengan kebutuhan Anda. Klik "Spesifikasi Detail" untuk informasi mesin, BBM, dan transmisi.</p>
+    <section id="rental" class="py-32 container mx-auto px-6">
+        <div class="mb-20 text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4">Armada Pilihan.</h2>
+            <p class="text-slate-500 max-w-xl">Unit muda (2022-2024), terawat berkala, bersih, dan wangi siap menemani perjalanan Anda.</p>
         </div>
-        <div id="car-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div id="car-grid" class="grid md:grid-cols-4 gap-8">
             </div>
     </section>
 
-    <section id="wisata" class="py-24 bg-[#0F172A] rounded-[3rem] mx-4 px-6 border border-white/5 shadow-2xl">
+    <section id="wisata" class="py-32 bg-slate-900/40 rounded-[4rem] mx-4 px-6 border border-white/5">
         <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-utama mb-4">Jadwal Paket <span class="text-indigo-500">Wisata</span></h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Kami menyusun waktu sedetail mungkin agar liburan Anda efisien dan tidak terburu-buru. Semua fasilitas sudah termasuk di dalam paket.</p>
-            </div>
-            <div id="tour-grid" class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black text-center mb-24 text-white uppercase italic tracking-tighter">Itinerary <span class="text-indigo-500">Wisata.</span></h2>
+            <div id="tour-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 </div>
-        </div>
-    </section>
-
-    <section id="aturan" class="py-24 container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-utama mb-4">Informasi & <span class="text-indigo-500">Syarat Sewa</span></h2>
-            <p class="text-slate-400">Penting untuk dibaca agar transaksi lancar dan saling percaya.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <div class="glass p-8 rounded-[2.5rem]">
-                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4"><i class="fas fa-key text-indigo-500 mr-2"></i> Syarat Lepas Kunci</h3>
-                <ul class="text-sm text-slate-300 space-y-4">
-                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-400 mt-1"></i> <div><strong>Dokumen Wajib:</strong> E-KTP Asli, Fotokopi Kartu Keluarga (KK), dan menunjukkan SIM A Asli yang masih aktif.</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-400 mt-1"></i> <div><strong>Jaminan:</strong> Wajib menitipkan sepeda motor beserta STNK asli selama masa sewa berlangsung.</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-400 mt-1"></i> <div><strong>Ketentuan Survei:</strong> Bersedia untuk disurvei tempat tinggal / domisilinya (Diutamakan area Madiun dan sekitarnya).</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-400 mt-1"></i> <div><strong>Durasi:</strong> Minimal penyewaan lepas kunci adalah 24 jam.</div></li>
-                </ul>
-            </div>
-            
-            <div class="glass p-8 rounded-[2.5rem]">
-                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4"><i class="fas fa-user-tie text-indigo-500 mr-2"></i> Sewa Sopir & Wisata</h3>
-                <ul class="text-sm text-slate-300 space-y-4">
-                    <li class="flex items-start gap-3"><i class="fas fa-info-circle text-indigo-400 mt-1"></i> <div><strong>Sewa dengan Sopir:</strong> Harga sewa normal yang tertera adalah untuk durasi 12 jam (Harga belum termasuk BBM, Tol, Parkir, dan makan Sopir).</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-info-circle text-indigo-400 mt-1"></i> <div><strong>Sistem Booking (DP):</strong> Pemesanan dianggap sah apabila sudah masuk DP minimal 30% dari total biaya sewa / harga paket tour.</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-info-circle text-indigo-400 mt-1"></i> <div><strong>Pelunasan:</strong> Pelunasan wajib dibayarkan maksimal pada saat hari H sebelum perjalanan dimulai.</div></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-info-circle text-indigo-400 mt-1"></i> <div><strong>Titik Jemput:</strong> Untuk paket tour, penjemputan gratis mencakup seluruh wilayah Kota/Kabupaten Madiun.</div></li>
-                </ul>
-            </div>
         </div>
     </section>
 
     <div id="modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal()"></div>
-        <div class="relative bg-[#020617] border border-white/10 w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-[2.5rem] p-6 md:p-12 shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white text-3xl transition"><i class="fas fa-times"></i></button>
+        <div class="relative bg-[#0F172A] border border-white/10 w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-[3rem] p-6 md:p-14 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-3xl"><i class="fas fa-times"></i></button>
             <div id="modal-content"></div>
         </div>
     </div>
 
-    <footer class="py-16 border-t border-white/10 text-center bg-[#0F172A]">
-        <div class="flex justify-center gap-10 mb-8 text-slate-400">
-            <a href="https://www.instagram.com/lyntama89" target="_blank" class="hover:text-indigo-400 transition"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="https://www.tiktok.com/@lyntama89" target="_blank" class="hover:text-indigo-400 transition"><i class="fab fa-tiktok fa-2x"></i></a>
-            <a href="https://wa.me/6282143463566" target="_blank" class="hover:text-green-500 transition"><i class="fab fa-whatsapp fa-2x"></i></a>
+    <footer class="py-24 border-t border-white/5 text-center px-6">
+        <h3 class="text-2xl font-black text-white mb-10 tracking-tighter">AURORA TRAVEL MADIUN</h3>
+        <div class="flex justify-center gap-6 mb-12">
+            <a href="https://www.instagram.com/lyntama89" target="_blank" class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-xl hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@lyntama89" target="_blank" class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-xl hover:bg-indigo-600 transition"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/6282143463566" target="_blank" class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-xl hover:bg-green-600 transition"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em]">&copy; 2026 Aurora Travel & Rental Madiun.</p>
+        <p class="text-slate-600 text-[10px] uppercase tracking-[0.5em] font-bold">&copy; 2026 Aurora Travel Madiun</p>
     </footer>
 
     <script>
         const waNumber = "6282143463566";
 
-        /* =========================================
-           1. DATA MOBIL RENTAL (LINK GAMBAR STABIL)
-        ========================================= */
+        // DATA MOBIL DENGAN LINK Wikipedia STABIL
         const rentalData = [
-            { 
-                id: 'zenix', 
-                name: 'Toyota Innova Zenix', 
-                price: '850.000', 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/2022_Toyota_Kijang_Innova_Zenix_V_hybrid_AG10_%2820230204%29.jpg/800px-2022_Toyota_Kijang_Innova_Zenix_V_hybrid_AG10_%2820230204%29.jpg',
-                specs: { transmisi: 'Manual & Matic', mesin: '2.000cc Bensin/Hybrid', bbm: 'Pertamax', tahun: '2023 - 2024' },
-                fasilitas: ['Kabin MPV Luas & Nyaman', 'AC Digital Double Blower', 'Audio Head Unit Tersambung HP', 'Fitur Keselamatan TSS']
-            },
-            { 
-                id: 'avanza', 
-                name: 'Toyota All New Avanza', 
-                price: '450.000', 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/2021_Toyota_Avanza_1.5_G_W101RE_%2820211121%28%29.jpg/800px-2021_Toyota_Avanza_1.5_G_W101RE_%2820211121%28%29.jpg',
-                specs: { transmisi: 'Manual & Matic', mesin: '1.500cc VVT-i', bbm: 'Pertalite / Pertamax', tahun: '2022 - 2024' },
-                fasilitas: ['Tarikan Mesin Halus', 'Sangat Irit Bahan Bakar', 'Colokan Charger di Setiap Baris', 'Kapasitas 7 Penumpang Nyaman']
-            },
-            { 
-                id: 'hiace', 
-                name: 'Toyota Hiace Premio', 
-                price: '1.250.000', 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2019_Toyota_HiAce_Premio_2.8_GDH322R_%2820200226%29.jpg/800px-2019_Toyota_HiAce_Premio_2.8_GDH322R_%2820200226%29.jpg',
-                specs: { transmisi: 'Manual (6 Percepatan)', mesin: '2.800cc Diesel Turbo', bbm: 'Dexlite', tahun: '2023' },
-                fasilitas: ['Kapasitas 14 Penumpang', 'Kursi Reclining yang Nyaman', 'Fasilitas Audio & TV Karaoke', 'AC Per Kepala Super Dingin']
-            },
-            { 
-                id: 'alphard', 
-                name: 'Toyota Alphard Mewah', 
-                price: '2.800.000', 
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2018_Toyota_Alphard_2.5_G_AGH30R_%2820191223%29.jpg/800px-2018_Toyota_Alphard_2.5_G_AGH30R_%2820191223%29.jpg',
-                specs: { transmisi: 'Otomatis (Matic)', mesin: '2.500cc Dual VVT-i', bbm: 'Pertamax Turbo', tahun: '2023' },
-                fasilitas: ['Kursi Pijat Kelas Eksekutif', 'Pintu Geser Otomatis', 'Atap Kaca (Dual Sunroof)', 'Kabin Ekstra Kedap & Eksklusif']
-            }
+            { id:'zenix', name:'Innova Zenix 2024', price:'850.000', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/2022_Toyota_Kijang_Innova_Zenix_V_hybrid_AG10_%2820230204%29.jpg/800px-2022_Toyota_Kijang_Innova_Zenix_V_hybrid_AG10_%2820230204%29.jpg', trans:'Manual/Matic', fuel:'Hybrid/Gas', cc:'2.000cc', specs:'Panoramic Roof, Captain Seat', isReady: true },
+            { id:'avanza', name:'New Avanza 2024', price:'450.000', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/2021_Toyota_Avanza_1.5_G_W101RE_%2820211121%28%29.jpg/800px-2021_Toyota_Avanza_1.5_G_W101RE_%2820211121%28%29.jpg', trans:'Manual/Matic', fuel:'Pertalite', cc:'1.500cc', specs:'7 Seater, AC Dingin', isReady: true },
+            { id:'hiace', name:'Hiace Premio VIP', price:'1.250.000', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2019_Toyota_HiAce_Premio_2.8_GDH322R_%2820200226%29.jpg/800px-2019_Toyota_HiAce_Premio_2.8_GDH322R_%2820200226%29.jpg', trans:'Manual', fuel:'Diesel', cc:'2.800cc', specs:'14 Seat, VIP Reclining', isReady: true },
+            { id:'alphard', name:'Alphard Transformer', price:'2.800.000', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2018_Toyota_Alphard_2.5_G_AGH30R_%2820191223%29.jpg/800px-2018_Toyota_Alphard_2.5_G_AGH30R_%2820191223%29.jpg', trans:'Automatic', fuel:'Pertamax', cc:'2.500cc', specs:'Pilot Seat, VIP Class', isReady: true }
         ];
 
-        /* =========================================
-           2. DATA WISATA (JADWAL PER JAM RAPI)
-        ========================================= */
+        // DATA TOUR DENGAN JADWAL LOGIS & GAMBAR Wikipedia
         const tourData = [
             { 
-                id: 'pacitan', 
-                name: 'Paket Pacitan Sehari (Klayar & Soge)', 
-                price: '850.000', 
-                img: 'https://images.unsplash.com/photo-1544919105-0e31e9c20a46?q=80&w=800',
-                ket: 'Trip Pulang Pergi (Tanpa Menginap)',
-                jadwal: [
-                    {
-                        hari: 'Rundown Perjalanan Pasti',
-                        acara: [
-                            { jam: '05:00', giat: 'Penjemputan di Rumah/Stasiun/Terminal Madiun' },
-                            { jam: '08:30', giat: 'Eksplorasi Stalaktit & Stalagmit Goa Gong' },
-                            { jam: '11:30', giat: 'Tiba di Pantai Klayar & Makan Siang Ikan Bakar' },
-                            { jam: '14:30', giat: 'Jalan Santai & Foto di Pantai Kasap (Raja Ampat Jatim)' },
-                            { jam: '16:30', giat: 'Berhenti & Menikmati Angin di Jembatan Pantai Soge' },
-                            { jam: '18:00', giat: 'Belanja Oleh-oleh Khas (Tahu Tuna, dll)' },
-                            { jam: '21:00', giat: 'Sampai kembali di Madiun. Perjalanan selesai.' }
-                        ]
-                    }
+                id:'bali', 
+                name:'Bali Premium (3D2N)', 
+                price:'2.450.000', 
+                img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Seminyak_beach_1.jpg/1200px-Seminyak_beach_1.jpg',
+                stay: { status: 'Hotel Bintang 4', duration: '2 Malam', location: 'Area Kuta / Legian' },
+                days: [
+                    { day: 'Hari Ke-1: South Bali & Jimbaran', schedule: [{t:'10:00', a:'Jemput Bandara & Check-in'}, {t:'12:30', a:'Lunch Ayam Betutu'}, {t:'14:00', a:'Tiba Melasti Beach'}, {t:'16:30', a:'Berangkat ke Uluwatu'}, {t:'17:30', a:'Uluwatu Sunset & Kecak Dance'}, {t:'20:00', a:'Dinner Jimbaran Seafood'}] },
+                    { day: 'Hari Ke-2: Culture Kintamani', schedule: [{t:'08:00', a:'Breakfast Hotel'}, {t:'10:00', a:'Desa Penglipuran'}, {t:'12:30', a:'Lunch View Gunung Batur'}, {t:'15:30', a:'Berangkat ke Tampaksiring'}, {t:'16:30', a:'Tirta Empul Holy Water'}, {t:'19:00', a:'Dinner Resto Lokal Premium'}] },
+                    { day: 'Hari Ke-3: Shopping & Drop', schedule: [{t:'08:00', a:'Breakfast & Check-out'}, {t:'10:00', a:'Pura Tanah Lot'}, {t:'12:00', a:'Lunch & Krisna Oleh-oleh'}, {t:'15:00', a:'Transfer Airport'} ]}
                 ]
             },
             { 
-                id: 'bali', 
-                name: 'Tour Bali All-In (3 Hari 2 Malam)', 
-                price: '2.450.000', 
-                img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800',
-                ket: 'Menginap di Hotel Bintang 4',
-                jadwal: [
-                    {
-                        hari: 'Hari Ke-1: Eksplorasi Bali Selatan',
-                        acara: [
-                            { jam: '10:00', giat: 'Penjemputan di Bandara Ngurah Rai Bali (Welcome Flower)' },
-                            { jam: '12:30', giat: 'Makan Siang Khas Bali (Ayam Betutu)' },
-                            { jam: '15:00', giat: 'Menuju Tebing Putih Pantai Melasti' },
-                            { jam: '17:00', giat: 'Melihat Sunset di Pura Uluwatu sekaligus Nonton Tari Kecak' },
-                            { jam: '19:30', giat: 'Makan Malam Seafood Romantis di Pantai Jimbaran' }
-                        ]
-                    },
-                    {
-                        hari: 'Hari Ke-2: Suasana Kintamani & Adat',
-                        acara: [
-                            { jam: '08:00', giat: 'Sarapan Pagi di Hotel' },
-                            { jam: '10:00', giat: 'Mengunjungi Desa Adat Penglipuran (Desa Terbersih)' },
-                            { jam: '13:00', giat: 'Makan Siang Sambil Menikmati View Gunung Batur' },
-                            { jam: '15:30', giat: 'Berkunjung ke Pura Tirta Empul (Mata Air Suci)' },
-                            { jam: '19:00', giat: 'Makan Malam Menu Lokal Khas Bali' }
-                        ]
-                    },
-                    {
-                        hari: 'Hari Ke-3: Belanja & Pengantaran Pulang',
-                        acara: [
-                            { jam: '08:00', giat: 'Sarapan Pagi dan Proses Check-out Hotel' },
-                            { jam: '10:00', giat: 'Wisata Ikonik Pura Tanah Lot' },
-                            { jam: '12:00', giat: 'Belanja Oleh-oleh Sepuasnya di Krisna / Erlangga' },
-                            { jam: '15:00', giat: 'Pengantaran kembali ke Bandara. Sampai Jumpa!' }
-                        ]
-                    }
+                id:'pacitan', 
+                name:'Pacitan Exotic (One Day)', 
+                price:'850.000', 
+                img:'https://upload.wikimedia.org/wikipedia/commons/f/fb/Pantai_Kasap%2C_Pacitan.jpg',
+                stay: { status: 'Tanpa Menginap', duration: 'Full Day Trip', location: 'Madiun-Pacitan PP' },
+                days: [
+                    { day: 'Rundown Perjalanan Pasti', schedule: [{t:'05:00', a:'Pick up Madiun'}, {t:'08:30', a:'Goa Gong'}, {t:'10:30', a:'Berangkat ke Klayar'}, {t:'11:30', a:'Tiba Klayar Beach & Lunch'}, {t:'13:30', a:'Berangkat ke Kasap'}, {t:'14:30', a:'Tiba Kasap (Wayag Jatim)'}, {t:'16:00', a:'Berangkat ke Soge'}, {t:'16:30', a:'Santai di Soge Beach'}, {t:'17:30', a:'Pulang, Mampir Oleh-oleh'}, {t:'21:00', a:'Tiba di Madiun'}] }
                 ]
             }
         ];
 
-        /* =========================================
-           3. FUNGSI UNTUK MENAMPILKAN KE LAYAR
-        ========================================= */
-        function renderLayar() {
-            // Render Daftar Mobil
+        // FUNGSI UTAMA RENDER GRID
+        function renderApp() {
             const carGrid = document.getElementById('car-grid');
             carGrid.innerHTML = rentalData.map(c => `
-                <div class="glass p-6 rounded-[2rem] text-center hover:border-indigo-500 transition duration-300">
-                    <img src="${c.img}" class="w-full h-40 object-cover rounded-2xl mb-5 shadow-lg" alt="${c.name}">
-                    <h4 class="text-lg font-bold text-white mb-1 uppercase italic tracking-tighter">${c.name}</h4>
-                    <p class="text-indigo-400 font-black text-xl mb-5">Rp ${c.price}</p>
-                    <button onclick="bukaModalRental('${c.id}')" class="w-full py-3 bg-white/10 border border-white/20 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600 transition">Spesifikasi Detail</button>
-                </div>
-            `).join('');
+                <div class="glass p-6 rounded-[2.5rem] text-center border border-white/5 group hover:border-indigo-500 transition duration-500">
+                    <div class="h-44 overflow-hidden rounded-3xl mb-6 shadow-xl bg-slate-800">
+                        <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/020617/ffffff?text=Unit+Photo'">
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-1 uppercase tracking-tighter italic">${c.name}</h4>
+                    <p class="text-indigo-400 font-black text-2xl tracking-tighter mb-4 italic">Rp ${c.price}</p>
+                    <button onclick="openRentalModal('${c.id}')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-700 transition">Spesifikasi Detail</button>
+                </div>`).join('');
 
-            // Render Daftar Wisata
             const tourGrid = document.getElementById('tour-grid');
             tourGrid.innerHTML = tourData.map(t => `
-                <div class="glass rounded-[3rem] overflow-hidden group border border-white/10 shadow-2xl">
-                    <div class="h-72 overflow-hidden relative">
-                        <img src="${t.img}" class="w-full h-full object-cover brightness-50 group-hover:scale-110 transition duration-700" alt="${t.name}">
-                        <div class="absolute bottom-6 left-6">
-                            <span class="bg-indigo-600 text-white px-4 py-2 rounded-xl font-black text-sm shadow-xl">Rp ${t.price}</span>
+                <div class="glass rounded-[3.5rem] overflow-hidden group border border-white/5 shadow-2xl">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="${t.img}" alt="${t.name}" class="w-full h-full object-cover brightness-[0.5] group-hover:scale-110 transition duration-700" onerror="this.src='https://placehold.co/1200x800/020617/ffffff?text=Tour+Photo'">
+                        <div class="absolute bottom-8 left-8">
+                            <span class="bg-indigo-600 text-white px-5 py-2 rounded-2xl font-black text-xs shadow-xl">Rp ${t.price}</span>
                         </div>
                     </div>
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-utama text-white mb-6 leading-tight">${t.name}</h3>
-                        <button onclick="bukaModalWisata('${t.id}')" class="w-full bg-white text-slate-900 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Lihat Jadwal Lengkap</button>
+                    <div class="p-10 text-center uppercase tracking-tighter italic">
+                        <h3 class="text-2xl font-black text-white mb-6">${t.name}</h3>
+                        <button onclick="openTourModal('${t.id}')" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition">Lihat Jadwal Per-Jam</button>
                     </div>
-                </div>
-            `).join('');
+                </div>`).join('');
         }
 
-        // FUNGSI BUKA MODAL INFO MOBIL LENGKAP
-        function bukaModalRental(id) {
+        // FUNGSI MODAL RENTAL (SPESIFIKASI LENGKAP KEMBALI)
+        function openRentalModal(id) {
             const c = rentalData.find(x => x.id === id);
             document.getElementById('modal-content').innerHTML = `
-                <div class="grid lg:grid-cols-2 gap-10 items-center">
-                    <img src="${c.img}" class="w-full h-80 lg:h-96 object-cover rounded-[2.5rem] shadow-2xl border border-white/10" alt="${c.name}">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover rounded-[3rem] shadow-2xl" onerror="this.src='https://placehold.co/600x400/020617/ffffff?text=Unit+Photo'">
                     <div>
-                        <h2 class="text-4xl font-utama text-indigo-400 mb-6">${c.name}</h2>
-                        
-                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Info Mesin & Tahun:</h3>
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10"><p class="text-slate-500 text-[10px] uppercase mb-1">Transmisi</p><p class="text-sm font-bold text-white">${c.specs.transmisi}</p></div>
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10"><p class="text-slate-500 text-[10px] uppercase mb-1">Tahun Unit</p><p class="text-sm font-bold text-white">${c.specs.tahun}</p></div>
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10"><p class="text-slate-500 text-[10px] uppercase mb-1">Kapasitas (CC)</p><p class="text-sm font-bold text-white">${c.specs.mesin}</p></div>
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10"><p class="text-slate-500 text-[10px] uppercase mb-1">Jenis Bahan Bakar</p><p class="text-sm font-bold text-white">${c.specs.bbm}</p></div>
+                        <h2 class="text-5xl font-black text-indigo-400 mb-6 uppercase italic tracking-tighter leading-none">${c.name}</h2>
+                        <div class="grid grid-cols-2 gap-4 mb-8 text-sm font-bold">
+                            <div class="bg-white/5 p-5 rounded-3xl border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-1">Transmisi</p><p class="text-white">${c.trans}</p></div>
+                            <div class="bg-white/5 p-5 rounded-3xl border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-1">Bahan Bakar</p><p class="text-white">${c.fuel}</p></div>
+                            <div class="bg-white/5 p-5 rounded-3xl border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-1">Mesin</p><p class="text-white">${c.cc}</p></div>
+                            <div class="bg-white/5 p-5 rounded-3xl border border-white/5"><p class="text-[10px] text-slate-500 uppercase mb-1">Fasilitas</p><p class="text-white text-xs">${c.specs}</p></div>
                         </div>
-
-                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Keunggulan & Fasilitas:</h3>
-                        <div class="bg-indigo-600/10 p-5 rounded-2xl border border-indigo-500/20 mb-8">
-                            <ul class="text-sm text-slate-300 font-medium space-y-2">
-                                ${c.fasilitas.map(f => `<li><i class="fas fa-check-circle text-indigo-500 mr-2"></i> ${f}</li>`).join('')}
-                            </ul>
-                        </div>
-
-                        <a href="https://wa.me/${waNumber}?text=Halo Aurora, saya sudah membaca syarat sewa di website, dan saya tertarik menyewa mobil ${c.name}." class="block w-full bg-green-600 text-white text-center py-5 rounded-2xl font-bold text-lg uppercase shadow-xl hover:bg-green-700 transition">Chat ke WhatsApp</a>
+                        <a href="https://wa.me/${waNumber}" class="block w-full bg-green-600 text-white text-center py-6 rounded-[2.5rem] font-black text-xl hover:bg-green-700 transition uppercase tracking-tighter italic">Booking via WhatsApp</a>
                     </div>
-                </div>
-            `;
+                </div>`;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
         }
 
-        // FUNGSI BUKA MODAL JADWAL WISATA PER-JAM
-        function bukaModalWisata(id) {
+        // FUNGSI MODAL TOUR (JADWAL PER JAM RAPI KEMBALI & LOGIS)
+        function openTourModal(id) {
             const t = tourData.find(x => x.id === id);
-            
-            // Generate Loop HTML untuk tabel
-            let tabelJadwalHTML = t.jadwal.map(hariJadwal => `
-                <div class="mb-8">
-                    <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-3">
-                        <span class="w-2 h-6 bg-indigo-500 rounded"></span> ${hariJadwal.hari}
-                    </h4>
-                    <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
-                        <table class="w-full text-left">
-                            <thead class="bg-black/40 text-[10px] uppercase font-bold text-slate-400 tracking-widest">
-                                <tr>
-                                    <th class="p-4 border-b border-white/5 w-24 text-center">Jam</th>
-                                    <th class="p-4 border-b border-white/5">Penjelasan Kegiatan</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-sm">
-                                ${hariJadwal.acara.map(acara => `
-                                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                                        <td class="p-4 font-black text-indigo-400 border-r border-white/5 text-center">${acara.jam}</td>
-                                        <td class="p-4 text-slate-200">${acara.giat}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `).join('');
-
             document.getElementById('modal-content').innerHTML = `
-                <div class="space-y-8">
-                    <div class="text-center border-b border-white/10 pb-6">
-                        <h2 class="text-4xl font-utama text-indigo-400 mb-4">${t.name}</h2>
-                        <span class="inline-block bg-white/10 text-slate-300 px-5 py-2 rounded-full text-xs font-bold border border-white/20 uppercase tracking-widest">${t.ket}</span>
+                <div class="space-y-12">
+                    <div class="text-center border-b border-white/10 pb-10">
+                        <h2 class="text-5xl font-black text-indigo-400 uppercase italic tracking-tighter mb-4">${t.name}</h2>
+                        <div class="flex justify-center gap-4 text-[10px] font-bold uppercase tracking-widest">
+                            <span class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow-lg">${t.stay.status}</span>
+                            <span class="bg-white/5 text-slate-400 px-5 py-2 rounded-xl border border-white/10">${t.stay.duration}</span>
+                        </div>
                     </div>
-                    
-                    <div class="max-w-4xl mx-auto">
-                        <p class="text-sm text-slate-400 mb-6 text-center">Jadwal di bawah ini dapat disesuaikan kembali bergantung pada kondisi lalu lintas dan cuaca di hari H.</p>
-                        ${tabelJadwalHTML}
+                    <div class="space-y-12">
+                        ${t.days.map(d => `
+                            <div class="space-y-6">
+                                <h4 class="text-white font-bold text-xl flex items-center gap-3 italic"><span class="bg-indigo-600 w-2 h-8 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.5)]"></span> ${d.day}</h4>
+                                <div class="bg-white/[0.02] rounded-[3rem] overflow-hidden border border-white/5 shadow-2xl">
+                                    <table class="w-full text-left">
+                                        <tbody class="text-sm">
+                                            ${d.schedule.map(s => `
+                                                <tr class="border-b border-white/5 hover:bg-indigo-600/5 transition">
+                                                    <td class="p-6 w-24 font-black text-indigo-500 border-r border-white/5 text-center">${s.t}</td>
+                                                    <td class="p-6 text-slate-300font-medium">${s.a}</td>
+                                                </tr>`).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>`).join('')}
                     </div>
-                    
-                    <a href="https://wa.me/${waNumber}?text=Halo Aurora, saya sudah cek website dan tertarik dengan rincian paket wisata ${t.name}." class="block w-full max-w-4xl mx-auto bg-indigo-600 text-white text-center py-6 rounded-2xl font-black text-xl uppercase tracking-widest shadow-2xl hover:bg-indigo-700 transition">Booking Paket Ini</a>
-                </div>
-            `;
+                    <a href="https://wa.me/${waNumber}" class="block w-full bg-white text-slate-900 text-center py-6 rounded-[2.5rem] font-black text-2xl uppercase tracking-tighter italic">Pesan Sekarang</a>
+                </div>`;
             document.getElementById('modal').classList.remove('hidden');
             document.body.classList.add('modal-active');
         }
 
-        // FUNGSI TUTUP MODAL
-        function closeModal() { 
-            document.getElementById('modal').classList.add('hidden'); 
-            document.body.classList.remove('modal-active'); 
-        }
+        // FUNGSI LAINNYA
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        function closeModal() { document.getElementById('modal').classList.add('hidden'); document.body.classList.remove('modal-active'); }
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) nav.classList.add('bg-[#020617]/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl');
+            else nav.classList.remove('bg-[#020617]/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl');
+        });
         
-        // MENU HP
-        function toggleMenu() { 
-            document.getElementById('mobile-menu').classList.toggle('hidden'); 
-        }
-
-        // INIT PROGRAM
-        renderLayar();
+        // JALANKAN PROGRAM
+        renderApp();
     </script>
 </body>
 </html>
