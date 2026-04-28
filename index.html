@@ -13,13 +13,13 @@
         .font-utama { font-weight: 800; text-transform: uppercase; font-style: italic; }
         .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Denah Kursi Hiace Asli 14 Seat (Formasi 2-1) */
-        .seat-layout { display: grid; grid-template-cols: repeat(4, 1fr); gap: 0.75rem; max-width: 280px; margin: 0 auto; }
-        .seat { aspect-ratio: 1/1; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; color: #cbd5e1; }
+        /* FIX: Denah Kursi Hiace Dikunci Agar Tidak Raksasa di HP */
+        .seat-layout { display: grid; grid-template-cols: repeat(4, 1fr); gap: 8px; max-width: 240px; margin: 0 auto; }
+        .seat { width: 100%; aspect-ratio: 1/1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; color: #cbd5e1; }
         .seat:hover { border-color: #818cf8; background: rgba(79,70,229,0.2); }
-        .seat.selected { background: #4f46e5 !important; border-color: #4f46e5; box-shadow: 0 0 15px rgba(79,70,229,0.6); color: white; }
+        .seat.selected { background: #4f46e5 !important; border-color: #4f46e5; box-shadow: 0 0 10px rgba(79,70,229,0.6); color: white; }
         .seat.booked { background: #1e293b; color: #475569; cursor: not-allowed; border: 1px solid #334155; }
-        .driver-seat { background: #0f172a; color: #6366f1; border: 1px dashed #4f46e5; cursor: not-allowed; display: flex; align-items: center; justify-content: center; border-radius: 0.75rem; }
+        .driver-seat { width: 100%; aspect-ratio: 1/1; background: #0f172a; color: #6366f1; border: 1px dashed #4f46e5; cursor: not-allowed; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
 
         /* Anti Teks Numpuk - Layout Flexbox */
         .card-trip { display: flex; flex-direction: column; height: 100%; transition: transform 0.3s ease; }
@@ -123,7 +123,6 @@
                     <ul class="text-slate-500 text-xs space-y-5 font-bold">
                         <li><button onclick="bukaModalTnC()" class="hover:text-indigo-400 transition">Syarat & Ketentuan Detail</button></li>
                         <li><button onclick="bukaModalPrivasi()" class="hover:text-indigo-400 transition">Kebijakan Privasi & Keamanan</button></li>
-                        <li><a href="https://wa.me/6282143463566" class="hover:text-indigo-400 transition">Pusat Pengaduan Layanan</a></li>
                     </ul>
                 </div>
             </div>
@@ -148,9 +147,8 @@
         const fallbackUI = "onerror=\"this.src='https://placehold.co/800x600/0f172a/4f46e5?text=Aurora+Travel'\"";
         
         let kursiTerpilih = []; let dataAktif = null; let jamAktif = ""; let tipeLayanan = "";
-        let savedManifestData = {};
+        let savedManifestData = {}; // MEMORI ANTI HILANG
 
-        // DATABASE FINAL
         const travelData = [
             {id:'m-j', rute:'Madiun - Juanda PP', harga:185000, waktu:['03:00','09:00','15:00','21:00'], booked:[1,4,14]},
             {id:'m-y', rute:'Madiun - Jogja / YIA PP', harga:165000, waktu:['05:00','13:00','20:00'], booked:[2,7]}
@@ -219,6 +217,7 @@
                 </div>`).join('');
         }
 
+        // FIX: STRUKTUR HTML KURSI DIKEMBALIKAN KE VERSI KECIL YANG PRESISI
         function generateSeatHTML(booked) {
             let html = '<div class="seat-layout">';
             const seat = (i) => `<div class="seat ${booked.includes(i) ? 'booked' : ''}" id="seat-${i}" ${booked.includes(i) ? '' : `onclick="toggleKursi(${i})"`}>${i}</div>`;
@@ -247,6 +246,7 @@
             hitungTagihan();
         }
 
+        // FIX: PASTIKAN DATA TERSIMPAN SAAT MENGETIK DAN TIDAK TERHAPUS
         function simpanFormManifest() {
             kursiTerpilih.forEach(k => {
                 let n = document.getElementById('nama-'+k), w = document.getElementById('wa-'+k), a = document.getElementById('alamat-'+k);
@@ -260,12 +260,13 @@
             let h = '<h4 class="text-[10px] font-bold text-slate-500 uppercase mb-4 mt-8 tracking-widest border-t border-white/10 pt-6">Manifest Penumpang:</h4>';
             kursiTerpilih.sort((a,b)=>a-b).forEach(k => {
                 let d = savedManifestData[k] || { n: '', w: '', a: '' };
+                // FIX: Menambahkan onchange="simpanFormManifest()" di setiap input WA dan Nama
                 h += `
-                <div class="mb-4 p-5 bg-white/5 rounded-2xl border border-white/10">
-                    <p class="text-[10px] font-black text-indigo-400 mb-3 uppercase">Kursi ${k}</p>
-                    <input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm mb-3 text-white outline-none focus:border-indigo-500 transition">
-                    <input type="tel" id="wa-${k}" value="${d.w}" placeholder="Nomor WhatsApp" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm mb-3 text-white outline-none focus:border-indigo-500 transition">
-                    <textarea id="alamat-${k}" placeholder="Titik Jemput" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm h-16 text-white outline-none focus:border-indigo-500 transition custom-scroll">${d.a}</textarea>
+                <div class="mb-4 p-5 bg-white/5 rounded-2xl border border-white/10 shadow-inner">
+                    <p class="text-[10px] font-black text-indigo-400 mb-3 uppercase tracking-widest"><i class="fas fa-user-check mr-2"></i>Penumpang Kursi ${k}</p>
+                    <input type="text" id="nama-${k}" value="${d.n}" placeholder="Nama Lengkap" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm mb-3 text-white outline-none focus:border-indigo-500 transition" onchange="simpanFormManifest()">
+                    <input type="tel" id="wa-${k}" value="${d.w}" placeholder="Nomor WhatsApp" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm mb-3 text-white outline-none focus:border-indigo-500 transition" onchange="simpanFormManifest()">
+                    <textarea id="alamat-${k}" placeholder="Titik Jemput" class="w-full bg-[#020617] border border-white/10 rounded-xl p-3 text-[16px] md:text-sm h-16 text-white outline-none focus:border-indigo-500 transition custom-scroll" onchange="simpanFormManifest()">${d.a}</textarea>
                 </div>`;
             });
             container.innerHTML = h;
@@ -286,7 +287,7 @@
             let headHTML = `
                 <div class="mb-5">
                     <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Pilih Hari:</label>
-                    <select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-[16px] text-white outline-none">
+                    <select id="p-hari" class="w-full bg-[#020617] border border-white/20 rounded-xl p-3 text-[16px] md:text-sm text-white outline-none focus:border-indigo-500">
                         <option value="" disabled selected>Pilih Jadwal</option>
                         <option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option><option value="Sabtu">Sabtu</option><option value="Minggu">Minggu</option>
                     </select>
@@ -296,31 +297,46 @@
             if(type === 'shuttle') {
                 extra = `${headHTML}<div class="mb-6"><label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Pilih Jam Berangkat:</label><div class="flex flex-wrap gap-2">${dataAktif.waktu.map(w => `<button onclick="setJam(this, '${w}')" class="jam-btn bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] font-bold transition text-slate-300">${w}</button>`).join('')}</div></div>`;
             } else {
+                // FIX: Kerapian Jadwal (Spasi antar elemen dan jarak waktu yang jelas)
                 extra = `
                     <div class="bg-indigo-600/10 p-4 rounded-xl mb-6 border border-indigo-500/20 text-[10px]">
                         <p class="text-white font-bold mb-1">🚗 Transport: Rp ${dataAktif.h_b.toLocaleString('id-ID')} / Pax</p>
                         ${dataAktif.h_k > 0 ? `<p class="text-indigo-400 font-bold">🏨 Hotel (${dataAktif.hotel}): Rp ${dataAktif.h_k.toLocaleString('id-ID')} / Kamar</p>` : ''}
                     </div>
                     ${headHTML}
-                    <div class="mb-6"><label class="block text-[10px] font-bold text-slate-500 uppercase mb-3 tracking-widest">Rundown Perjalanan:</label>
-                    <div class="space-y-4 max-h-[200px] overflow-y-auto custom-scroll pr-3 text-[10px] text-slate-400">${dataAktif.jadwal.map(j => `<div><b class="text-white block mb-1 uppercase">${j.hari}</b>${j.acara.map(a=>`<p><span class="text-indigo-400 font-black">${a.t}</span> - ${a.g}</p>`).join('')}</div>`).join('')}</div></div>`;
+                    <div class="mb-6">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-3 tracking-widest">Rundown Perjalanan:</label>
+                        <div class="space-y-6 max-h-[200px] overflow-y-auto custom-scroll pr-3 text-[10px] md:text-xs text-slate-300">
+                            ${dataAktif.jadwal.map(j => `
+                                <div class="border-l-2 border-indigo-600 pl-4">
+                                    <b class="text-white block mb-2 uppercase tracking-widest">${j.hari}</b>
+                                    <div class="space-y-1">
+                                        ${j.acara.map(a=>`<p><span class="text-indigo-400 font-black w-12 inline-block">${a.t}</span> - ${a.g}</p>`).join('')}
+                                    </div>
+                                </div>`).join('')}
+                        </div>
+                    </div>`;
             }
 
             document.getElementById('modal-content').innerHTML = `
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <div><h2 class="text-3xl font-black text-indigo-400 mb-6 uppercase italic pr-12">${dataAktif.rute || dataAktif.name}</h2>${extra}<div id="manifest-area"></div></div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
+                <div class="pt-4 md:pt-0">
+                    <h2 class="text-3xl font-black text-indigo-400 mb-6 uppercase italic pr-12">${dataAktif.rute || dataAktif.name}</h2>
+                    ${extra}
+                    <div id="manifest-area"></div>
+                </div>
                 <div class="bg-white/5 p-6 md:p-8 rounded-[2rem] border border-white/10 h-fit lg:sticky lg:top-0">
                     <p class="text-center text-[10px] font-bold text-slate-400 mb-6 uppercase tracking-widest">Denah Hiace Executive (2-1)</p>
                     ${generateSeatHTML(dataAktif.booked)}
-                    <div class="mt-8 pt-6 border-t border-white/10 flex justify-between items-center"><span class="text-xs font-bold text-slate-400 uppercase">Total:</span><span id="price-display" class="text-2xl font-black text-indigo-400">Rp 0</span></div>
-                    <button onclick="prosesWA()" class="w-full bg-green-600 text-white py-5 rounded-2xl font-black text-xs uppercase italic mt-6 shadow-2xl flex justify-center items-center gap-2"><i class="fab fa-whatsapp text-xl"></i> Pesan ke WhatsApp</button>
+                    <div class="mt-8 pt-6 border-t border-white/10 flex justify-between items-center"><span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Tagihan:</span><span id="price-display" class="text-2xl font-black text-indigo-400">Rp 0</span></div>
+                    <button onclick="prosesWA()" class="w-full bg-green-600 text-white py-5 rounded-2xl font-black text-xs uppercase italic mt-6 shadow-2xl flex justify-center items-center gap-2 transition hover:bg-green-700"><i class="fab fa-whatsapp text-xl"></i> Pesan ke WhatsApp</button>
                 </div>
             </div>`;
             document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').classList.add('flex'); document.body.classList.add('modal-active');
         }
 
         function prosesWA() {
-            simpanFormManifest();
+            simpanFormManifest(); // Final save sebelum mengirim
             let h = document.getElementById('p-hari').value;
             if(!h) return alert("Pilih hari keberangkatan!");
             if(tipeLayanan==='shuttle' && !jamAktif) return alert("Pilih jam berangkat!");
@@ -344,30 +360,37 @@
                     <p class="text-xs font-bold text-slate-500 mb-4 uppercase">${c.specs.t} | ${c.specs.m}</p>
                     <div class="flex flex-wrap gap-2 mb-8">${c.f.map(f => `<span class="bg-indigo-600/10 text-indigo-400 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase border border-indigo-500/20"><i class="fas fa-check-circle mr-1 text-[8px]"></i>${f}</span>`).join('')}</div>
                     <div class="space-y-4 border-t border-white/10 pt-8">
-                        <input type="text" id="r-n" placeholder="Nama Penyewa" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] text-white">
-                        <input type="date" id="r-t" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] text-white">
-                        <textarea id="r-a" placeholder="Alamat Titik Antar" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] h-20 text-white"></textarea>
+                        <input type="text" id="r-n" placeholder="Nama Penyewa" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] md:text-sm text-white outline-none focus:border-indigo-500">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="date" id="r-t" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] md:text-sm text-white outline-none focus:border-indigo-500">
+                            <select id="r-l" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] md:text-sm text-white outline-none focus:border-indigo-500">
+                                <option value="" disabled selected>Pilih Layanan</option>
+                                <option value="Mobil + Sopir">Mobil + Sopir</option>
+                                <option value="Lepas Kunci">Lepas Kunci</option>
+                            </select>
+                        </div>
+                        <textarea id="r-a" placeholder="Alamat Titik Antar" class="w-full bg-[#020617] border border-white/20 rounded-xl p-4 text-[16px] md:text-sm h-20 text-white outline-none focus:border-indigo-500"></textarea>
                     </div>
-                    <button onclick="prosesRentalWA('${c.name}')" class="w-full bg-green-600 text-white py-5 rounded-2xl font-black text-sm uppercase italic mt-6 shadow-2xl">Pesan via WA</button>
+                    <button onclick="prosesRentalWA('${c.name}')" class="w-full bg-green-600 text-white py-5 rounded-2xl font-black text-sm uppercase italic mt-6 shadow-2xl flex justify-center items-center gap-2 hover:bg-green-700 transition"><i class="fab fa-whatsapp text-xl"></i> Lanjut Booking WhatsApp</button>
                 </div>
             </div>`;
             document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').classList.add('flex'); document.body.classList.add('modal-active');
         }
 
         function prosesRentalWA(n) {
-            let nm = document.getElementById('r-n').value, t = document.getElementById('r-t').value, a = document.getElementById('r-a').value;
-            if(!nm || !t || !a) return alert("Lengkapi data rental!");
-            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(`*RENTAL AURORA*\nUnit: ${n}\nNama: ${nm}\nTanggal: ${t}\nAlamat: ${a}`)}`, '_blank');
+            let nm = document.getElementById('r-n').value, t = document.getElementById('r-t').value, l = document.getElementById('r-l').value, a = document.getElementById('r-a').value;
+            if(!nm || !t || !l || !a) return alert("Lengkapi data rental!");
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(`*RENTAL AURORA*\nUnit: ${n}\nNama: ${nm}\nTanggal: ${t}\nLayanan: ${l}\nAlamat: ${a}`)}`, '_blank');
         }
 
         function bukaModalTnC() {
             document.getElementById('modal-content').innerHTML = `
                 <h2 class="text-3xl font-black text-indigo-400 mb-8 uppercase italic border-b border-white/10 pb-4">Syarat & Ketentuan</h2>
-                <div class="space-y-6 text-xs text-slate-300 leading-relaxed">
-                    <div class="bg-white/5 p-5 rounded-2xl"><b class="text-white block mb-2 uppercase">1. Reservasi</b>Pemesanan sah jika DP 30% telah dibayar ke rekening resmi. Pelunasan di awal perjalanan.</div>
-                    <div class="bg-white/5 p-5 rounded-2xl"><b class="text-white block mb-2 uppercase">2. Pembatalan</b>H-1 cancel potong 50% DP. Hari H hangus.</div>
-                    <div class="bg-white/5 p-5 rounded-2xl"><b class="text-white block mb-2 uppercase">3. Asuransi</b>Penumpang reguler dilindungi asuransi Jasa Raharja sesuai manifest.</div>
-                    <div class="bg-white/5 p-5 rounded-2xl"><b class="text-white block mb-2 uppercase">4. Bagasi</b>Maksimal 1 koper sedang + 1 tas kabin per orang.</div>
+                <div class="space-y-6 text-xs md:text-sm text-slate-300 leading-relaxed">
+                    <div class="bg-white/5 p-6 rounded-2xl"><b class="text-white block mb-2 uppercase tracking-widest">1. Reservasi</b>Pemesanan sah jika DP 30% telah dibayar ke rekening resmi. Pelunasan di awal perjalanan sebelum berangkat.</div>
+                    <div class="bg-white/5 p-6 rounded-2xl"><b class="text-white block mb-2 uppercase tracking-widest">2. Pembatalan</b>H-1 pembatalan dikenakan potongan 50% DP. Pembatalan pada hari H mengakibatkan DP hangus.</div>
+                    <div class="bg-white/5 p-6 rounded-2xl"><b class="text-white block mb-2 uppercase tracking-widest">3. Asuransi Perjalanan</b>Semua penumpang reguler dilindungi oleh asuransi Jasa Raharja sesuai manifest yang didaftarkan.</div>
+                    <div class="bg-white/5 p-6 rounded-2xl"><b class="text-white block mb-2 uppercase tracking-widest">4. Bagasi</b>Maksimal 1 koper ukuran sedang + 1 tas ransel kabin per orang. Kehilangan barang berharga adalah tanggung jawab pribadi.</div>
                 </div>`;
             document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').classList.add('flex'); document.body.classList.add('modal-active');
         }
@@ -375,8 +398,13 @@
         function bukaModalPrivasi() {
             document.getElementById('modal-content').innerHTML = `
                 <h2 class="text-3xl font-black text-indigo-400 mb-8 uppercase italic border-b border-white/10 pb-4">Kebijakan Privasi</h2>
-                <div class="text-xs text-slate-300 leading-relaxed bg-white/5 p-8 rounded-2xl">
-                    Data pribadi Anda (Nama, WA, Alamat) hanya digunakan untuk manifest asuransi Jasa Raharja dan koordinasi driver. Kami menjamin 100% data Anda tidak akan dibocorkan atau dijual ke pihak ketiga manapun.
+                <div class="text-xs md:text-sm text-slate-300 leading-relaxed bg-white/5 p-8 rounded-2xl">
+                    <p class="mb-4">Data pribadi Anda (Nama, WhatsApp, Alamat) dijamin 100% keamanannya. Data ini hanya akan digunakan semata-mata untuk:</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4 text-indigo-200">
+                        <li>Pendaftaran asuransi resmi perjalanan (Jasa Raharja).</li>
+                        <li>Koordinasi penjemputan oleh driver di lapangan.</li>
+                    </ul>
+                    <p>Kami tidak akan pernah membocorkan, menyewakan, atau menjual data Anda kepada pihak agensi iklan maupun pihak ketiga manapun di luar operasional Aurora Travel.</p>
                 </div>`;
             document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').classList.add('flex'); document.body.classList.add('modal-active');
         }
